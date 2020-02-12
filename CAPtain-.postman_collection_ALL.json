@@ -1,0 +1,2591 @@
+{
+	"info": {
+		"_postman_id": "5354678b-bd92-4f7a-9d1b-8fee7932e4e1",
+		"name": "CAPtain/",
+		"description": "Test suite for all SWAGGER API stub calls",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/locations",
+			"item": [
+				{
+					"name": "CAPtain/locations/get_locations_by_sfid/all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0a8fd42d-38d5-442f-9548-76ce5a68845b",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://2hj0vrfbme.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//function to call is pm.environment.get(\"locations_url\");",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,500) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"        ",
+									"        pm.test(\"JSON BODY VALIDATION\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"id\");",
+									"            pm.expect(pm.response.text()).to.include(\"status\");",
+									"            pm.expect(pm.response.text()).to.include(\"name\");",
+									"            pm.expect(pm.response.text()).to.include(\"street\");",
+									"            pm.expect(pm.response.text()).to.include(\"city\");",
+									"            pm.expect(pm.response.text()).to.include(\"province_state\");",
+									"            pm.expect(pm.response.text()).to.include(\"country\");",
+									"            pm.expect(pm.response.text()).to.include(\"postal_code\");",
+									"            pm.expect(pm.response.text()).to.include(\"latitude\");",
+									"            pm.expect(pm.response.text()).to.include(\"longitude\");",
+									"        });",
+									"            ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1c53ac62-04d9-446f-80ad-a17b8fb222f1",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://2hj0vrfbme.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"pm.environment.get(\"locations_url\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{locations_url}}/locations/get_locations_by_sfid/all",
+							"host": [
+								"{{locations_url}}"
+							],
+							"path": [
+								"locations",
+								"get_locations_by_sfid",
+								"all"
+							]
+						},
+						"description": "Calls to /locations microservice"
+					},
+					"response": []
+				},
+				{
+					"name": "CAPtain/locations/get_location_detail/all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9e9ec859-8ebf-45ea-b0e2-24d4936bc6d4",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://2hj0vrfbme.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//function to call is pm.environment.get(\"locations_url\");",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,500) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"        ",
+									"        pm.test(\"JSON BODY VALIDATION\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"id\");",
+									"            pm.expect(pm.response.text()).to.include(\"status\");",
+									"            pm.expect(pm.response.text()).to.include(\"name\");",
+									"            pm.expect(pm.response.text()).to.include(\"street\");",
+									"            pm.expect(pm.response.text()).to.include(\"city\");",
+									"            pm.expect(pm.response.text()).to.include(\"province_state\");",
+									"            pm.expect(pm.response.text()).to.include(\"country\");",
+									"            pm.expect(pm.response.text()).to.include(\"postal_code\");",
+									"            pm.expect(pm.response.text()).to.include(\"product\");",
+									"            pm.expect(pm.response.text()).to.include(\"circuit_id\");",
+									"            pm.expect(pm.response.text()).to.include(\"bandwidth\");",
+									"            pm.expect(pm.response.text()).to.include(\"term\");",
+									"            pm.expect(pm.response.text()).to.include(\"start_date\");",
+									"            pm.expect(pm.response.text()).to.include(\"monthly_cost\");",
+									"        });",
+									"            ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "706462ac-c11b-4a35-835e-e8c484cf25b3",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://2hj0vrfbme.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"pm.environment.get(\"locations_url\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{locations_url}}/locations/get_location_detail/all",
+							"host": [
+								"{{locations_url}}"
+							],
+							"path": [
+								"locations",
+								"get_location_detail",
+								"all"
+							]
+						},
+						"description": "Calls to /locations microservice"
+					},
+					"response": []
+				},
+				{
+					"name": "CAPtain/locations/get_locations_by_service_id/all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5c35b80e-dde0-47c2-8096-f5e748a53ff9",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://2hj0vrfbme.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//function to call is pm.environment.get(\"locations_url\");",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,500) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"        ",
+									"        pm.test(\"JSON BODY VALIDATION\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"id\");",
+									"            pm.expect(pm.response.text()).to.include(\"status\");",
+									"            pm.expect(pm.response.text()).to.include(\"name\");",
+									"            pm.expect(pm.response.text()).to.include(\"street\");",
+									"            pm.expect(pm.response.text()).to.include(\"city\");",
+									"            pm.expect(pm.response.text()).to.include(\"province_state\");",
+									"            pm.expect(pm.response.text()).to.include(\"country\");",
+									"        });",
+									"            ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "479fba85-df00-4e38-af7f-c105ea724bef",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://2hj0vrfbme.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"pm.environment.get(\"locations_url\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{locations_url}}/locations/get_locations_by_service_id/all",
+							"host": [
+								"{{locations_url}}"
+							],
+							"path": [
+								"locations",
+								"get_locations_by_service_id",
+								"all"
+							]
+						},
+						"description": "Calls to /locations microservice"
+					},
+					"response": []
+				},
+				{
+					"name": "CAPtain/locations/get_buildings/all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d1310bd6-6b96-4bf9-8967-be6dc8561d55",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://2hj0vrfbme.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//function to call is pm.environment.get(\"locations_url\");",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,500) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"        ",
+									"        pm.test(\"JSON BODY VALIDATION\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"id\");",
+									"            pm.expect(pm.response.text()).to.include(\"building_name\");",
+									"            pm.expect(pm.response.text()).to.include(\"street\");",
+									"            pm.expect(pm.response.text()).to.include(\"city\");",
+									"            pm.expect(pm.response.text()).to.include(\"province_state\");",
+									"            pm.expect(pm.response.text()).to.include(\"country\");",
+									"            pm.expect(pm.response.text()).to.include(\"postal_code\");",
+									"            pm.expect(pm.response.text()).to.include(\"type\");",
+									"            pm.expect(pm.response.text()).to.include(\"network\");",
+									"            pm.expect(pm.response.text()).to.include(\"entrance\");",
+									"        });",
+									"            ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9543b069-4053-4b3a-adad-10104f574576",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://2hj0vrfbme.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"pm.environment.get(\"locations_url\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{locations_url}}/locations/get_buildings/all",
+							"host": [
+								"{{locations_url}}"
+							],
+							"path": [
+								"locations",
+								"get_buildings",
+								"all"
+							]
+						},
+						"description": "Calls to /locations microservice"
+					},
+					"response": []
+				},
+				{
+					"name": "CAPtain/locations/get_demarcs_by_building_id/all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "61e8acb7-cd34-4dd5-a95c-b2d9bd2a5095",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://2hj0vrfbme.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//function to call is pm.environment.get(\"locations_url\");",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,500) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"        ",
+									"        pm.test(\"JSON BODY VALIDATION\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"id\");",
+									"            pm.expect(pm.response.text()).to.include(\"demarc\");",
+									"            pm.expect(pm.response.text()).to.include(\"operator\");",
+									"            pm.expect(pm.response.text()).to.include(\"name\");",
+									"            pm.expect(pm.response.text()).to.include(\"type\");",
+									"            pm.expect(pm.response.text()).to.include(\"network\");",
+									"        });",
+									"            ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "95f5c90b-880a-4721-a7fd-98a0c8f87248",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://2hj0vrfbme.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"pm.environment.get(\"locations_url\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{locations_url}}/locations/get_demarcs_by_building_id/all",
+							"host": [
+								"{{locations_url}}"
+							],
+							"path": [
+								"locations",
+								"get_demarcs_by_building_id",
+								"all"
+							]
+						},
+						"description": "Calls to /locations microservice"
+					},
+					"response": []
+				},
+				{
+					"name": "CAPtain/locations/get_csp_destinations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "febecdaa-119e-4a81-936b-f04a246e972f",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://2hj0vrfbme.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//function to call is pm.environment.get(\"locations_url\");",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,500) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"        ",
+									"        pm.test(\"JSON BODY VALIDATION\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"id\");",
+									"            pm.expect(pm.response.text()).to.include(\"csp_account_name\");",
+									"            pm.expect(pm.response.text()).to.include(\"destination_name\");",
+									"            pm.expect(pm.response.text()).to.include(\"street\");",
+									"            pm.expect(pm.response.text()).to.include(\"city\");",
+									"            pm.expect(pm.response.text()).to.include(\"province_state\");",
+									"            pm.expect(pm.response.text()).to.include(\"country\");",
+									"            pm.expect(pm.response.text()).to.include(\"postal_code\");",
+									"        });",
+									"            ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6cea224d-fb40-4427-a695-86a6599688f2",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://2hj0vrfbme.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"pm.environment.get(\"locations_url\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{locations_url}}/locations/get_csp_destinations?connection_type=hosted&account_id=a0a100000001ab1",
+							"host": [
+								"{{locations_url}}"
+							],
+							"path": [
+								"locations",
+								"get_csp_destinations"
+							],
+							"query": [
+								{
+									"key": "connection_type",
+									"value": "hosted"
+								},
+								{
+									"key": "account_id",
+									"value": "a0a100000001ab1"
+								}
+							]
+						},
+						"description": "Calls to /locations microservice"
+					},
+					"response": []
+				},
+				{
+					"name": "CAPtain/locations/change_location_name",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "33415e5a-4418-4336-b146-e8784ac25aad",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://2hj0vrfbme.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"",
+									"pm.environment.set(\"location_id\", \"a0a100000001ab1\");",
+									"pm.environment.set(\"name\", \"Port Pop 2\");",
+									"",
+									"pm.environment.get(\"locations_url\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "47a9b4c2-2b89-42ed-8d08-dfb4469df1cb",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://2hj0vrfbme.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//function to call is pm.environment.get(\"locations_url\");",
+									"",
+									"//environment variables dynamically set via JSON body (\"location_id\" : \"a0a100000001ab1\", \"name\" : \"Port Pop 2\") for stubbed test case",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,201,202) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Successful POST request\", function () {",
+									"            pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+									"        });",
+									"        ",
+									"        pm.test(\"POST request - Response body validation\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"Location name has changed\");",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"        ",
+									"        ",
+									"            ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"location_id\" : \"{{location_id}}\",\r\n  \"name\" : \"{{name}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{locations_url}}/locations/change_location_name",
+							"host": [
+								"{{locations_url}}"
+							],
+							"path": [
+								"locations",
+								"change_location_name"
+							]
+						},
+						"description": "Calls to /locations microservice"
+					},
+					"response": []
+				}
+			],
+			"description": "Calls to /locations microservice Swagger API stubs",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "/services",
+			"item": [
+				{
+					"name": "CAPtain/services/get_services_by_sfid/all",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "baad007c-31fb-4571-970e-43d485a945e4",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://eh7oy2uyue.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"pm.environment.get(\"services_url\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "df153239-28ef-4656-977c-2ec57901163b",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://eh7oy2uyue.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//function to call is pm.environment.get(\"services_url\");",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,500) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"        ",
+									"        pm.test(\"JSON BODY VALIDATION\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"id\");",
+									"            pm.expect(pm.response.text()).to.include(\"status\");",
+									"            pm.expect(pm.response.text()).to.include(\"service_id\");",
+									"            pm.expect(pm.response.text()).to.include(\"name\");",
+									"            pm.expect(pm.response.text()).to.include(\"product_group\");",
+									"            pm.expect(pm.response.text()).to.include(\"product\");",
+									"            pm.expect(pm.response.text()).to.include(\"term\");",
+									"            pm.expect(pm.response.text()).to.include(\"bandwidth\");",
+									"            pm.expect(pm.response.text()).to.include(\"circuit_id\");",
+									"            pm.expect(pm.response.text()).to.include(\"start_date\");",
+									"            pm.expect(pm.response.text()).to.include(\"monthly_cost\");",
+									"        });",
+									"            ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{services_url}}/services/get_services_by_sfid/all",
+							"host": [
+								"{{services_url}}"
+							],
+							"path": [
+								"services",
+								"get_services_by_sfid",
+								"all"
+							]
+						},
+						"description": "Call to /services microservice"
+					},
+					"response": []
+				},
+				{
+					"name": "CAPtain/services/get_service_detail/all",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "2bc90a0b-ddcb-4383-8eb2-fd742d38f612",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://eh7oy2uyue.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"pm.environment.get(\"services_url\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "33cf72d5-ec89-407c-83e5-d1c29953e5b0",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://eh7oy2uyue.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//function to call is pm.environment.get(\"services_url\");",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,500) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"        ",
+									"        pm.test(\"JSON BODY VALIDATION\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"id\");",
+									"            pm.expect(pm.response.text()).to.include(\"status\");",
+									"            pm.expect(pm.response.text()).to.include(\"name\");",
+									"            pm.expect(pm.response.text()).to.include(\"street\");",
+									"            pm.expect(pm.response.text()).to.include(\"city\");",
+									"            pm.expect(pm.response.text()).to.include(\"province_state\");",
+									"            pm.expect(pm.response.text()).to.include(\"country\");",
+									"            pm.expect(pm.response.text()).to.include(\"postal_code\");",
+									"            pm.expect(pm.response.text()).to.include(\"product\");",
+									"            pm.expect(pm.response.text()).to.include(\"circuit_id\");",
+									"            pm.expect(pm.response.text()).to.include(\"bandwidth\");",
+									"            pm.expect(pm.response.text()).to.include(\"term\");",
+									"            pm.expect(pm.response.text()).to.include(\"start_date\");",
+									"            pm.expect(pm.response.text()).to.include(\"monthly_cost\");",
+									"        });",
+									"            ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{services_url}}/services/get_service_detail/all",
+							"host": [
+								"{{services_url}}"
+							],
+							"path": [
+								"services",
+								"get_service_detail",
+								"all"
+							]
+						},
+						"description": "Call to /services microservice"
+					},
+					"response": []
+				},
+				{
+					"name": "CAPtain/services/get_services_by_location_id/all",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "22e1ce80-2265-4b17-adfc-e20eeded03a0",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://eh7oy2uyue.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"pm.environment.get(\"services_url\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "7d44223a-3550-4360-b09c-77aadfd4314d",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://eh7oy2uyue.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//function to call is pm.environment.get(\"services_url\");",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,500) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"        ",
+									"        pm.test(\"JSON BODY VALIDATION\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"id\");",
+									"            pm.expect(pm.response.text()).to.include(\"status\");",
+									"            pm.expect(pm.response.text()).to.include(\"service_id\");",
+									"            pm.expect(pm.response.text()).to.include(\"name\");",
+									"            pm.expect(pm.response.text()).to.include(\"product\");",
+									"            pm.expect(pm.response.text()).to.include(\"term\");",
+									"            pm.expect(pm.response.text()).to.include(\"bandwidth\");",
+									"            pm.expect(pm.response.text()).to.include(\"circuit_id\");",
+									"        });",
+									"            ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{services_url}}/services/get_services_by_location_id/all",
+							"host": [
+								"{{services_url}}"
+							],
+							"path": [
+								"services",
+								"get_services_by_location_id",
+								"all"
+							]
+						},
+						"description": "Call to /services microservice"
+					},
+					"response": []
+				},
+				{
+					"name": "CAPtain/services/get_csps_with_details",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "22e1ce80-2265-4b17-adfc-e20eeded03a0",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://eh7oy2uyue.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"pm.environment.get(\"services_url\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "7d44223a-3550-4360-b09c-77aadfd4314d",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://eh7oy2uyue.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//function to call is pm.environment.get(\"services_url\");",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,500) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"        ",
+									"        pm.test(\"JSON BODY VALIDATION\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"id\");",
+									"            pm.expect(pm.response.text()).to.include(\"csp_image\");",
+									"            pm.expect(pm.response.text()).to.include(\"csp_account_name\");",
+									"            pm.expect(pm.response.text()).to.include(\"csp_description\");",
+									"            pm.expect(pm.response.text()).to.include(\"csp_url\");",
+									"            ",
+									"            pm.expect(pm.response.text()).to.include(\"details\");",
+									"                pm.expect(pm.response.text()).to.include(\"connection_type\");",
+									"                pm.expect(pm.response.text()).to.include(\"csp_service_key\");",
+									"                pm.expect(pm.response.text()).to.include(\"csp_type_details\");",
+									"        });",
+									"            ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{services_url}}/services/get_csps_with_details",
+							"host": [
+								"{{services_url}}"
+							],
+							"path": [
+								"services",
+								"get_csps_with_details"
+							]
+						},
+						"description": "Call to /services microservice"
+					},
+					"response": []
+				},
+				{
+					"name": "CAPtain/services/change_service",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "33415e5a-4418-4336-b146-e8784ac25aad",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://eh7oy2uyue.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"",
+									"pm.environment.set(\"service_id\", \"a0a100000001ab1\");",
+									"pm.environment.set(\"name\", \"Service Name Change\");",
+									"pm.environment.set(\"bandwidth\", \"1 Gbps\");",
+									"pm.environment.set(\"disconnect_reason\", \"Competitive Loss\");",
+									"",
+									"pm.environment.get(\"services_url\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "47a9b4c2-2b89-42ed-8d08-dfb4469df1cb",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://2hj0vrfbme.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//function to call is pm.environment.get(\"locations_url\");",
+									"",
+									"//environment variables dynamically set via JSON body (\"service_id\" : \"a0a100000001ab1\",  \"name\" : \"Service Name Change\", \"bandwidth\" : \"1 Gbps\", \"disconnect_reason\" :  \"Competitive Loss\") for stubbed test case",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,201,202) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Successful POST request\", function () {",
+									"            pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+									"        });",
+									"        ",
+									"        pm.test(\"POST request - Response body validation\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"Service has been changed\");",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"        ",
+									"        ",
+									"            ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"service_id\" : \"{{service_id}}\",\r\n  \"name\" : \"{{name}}\",\r\n  \"bandwidth\" : \"{{bandwidth}}\",\r\n  \"disconnect_reason\" : \"{{disconnect_reason}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{services_url}}/services/change_service",
+							"host": [
+								"{{services_url}}"
+							],
+							"path": [
+								"services",
+								"change_service"
+							]
+						},
+						"description": "Calls to /services microservice"
+					},
+					"response": []
+				}
+			],
+			"description": "Calls to /services microservice Swagger API stubs",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "/quotes",
+			"item": [
+				{
+					"name": "CAPtain/quotes/get_location_quote_by_quote_id/{{quote_id}}",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "baad007c-31fb-4571-970e-43d485a945e4",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://jsrdnxbz9a.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//functions to call are pm.environment.get(\"quotes_url\"); and pm.environment.set(\"quote_id\", \"1185336\");",
+									"pm.environment.get(\"quotes_url\");",
+									"",
+									"pm.environment.set(\"quote_id\", \"1185336\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "df153239-28ef-4656-977c-2ec57901163b",
+								"exec": [
+									"//selected environment variables (URL) which are currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://jsrdnxbz9a.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//functions to call are pm.environment.get(\"quotes_url\"); and pm.environment.set(\"quote_id\", \"1185336\");",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,500) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"        ",
+									"        pm.test(\"JSON BODY VALIDATION\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"quote_status\");",
+									"            ",
+									"            pm.expect(pm.response.text()).to.include(\"location\");",
+									"                pm.expect(pm.response.text()).to.include(\"building_id\");",
+									"                pm.expect(pm.response.text()).to.include(\"building_name\");",
+									"                pm.expect(pm.response.text()).to.include(\"street\");",
+									"                pm.expect(pm.response.text()).to.include(\"city\");",
+									"                pm.expect(pm.response.text()).to.include(\"province_state\");",
+									"                pm.expect(pm.response.text()).to.include(\"country\");",
+									"                pm.expect(pm.response.text()).to.include(\"postal_code\");",
+									"                pm.expect(pm.response.text()).to.include(\"type\");",
+									"                pm.expect(pm.response.text()).to.include(\"network\");",
+									"                pm.expect(pm.response.text()).to.include(\"entrance\");",
+									"                    ",
+									"            pm.expect(pm.response.text()).to.include(\"demarc\");",
+									"                pm.expect(pm.response.text()).to.include(\"demarc_id\");",
+									"                pm.expect(pm.response.text()).to.include(\"demarc\");",
+									"                pm.expect(pm.response.text()).to.include(\"operator\");",
+									"                pm.expect(pm.response.text()).to.include(\"name\");",
+									"                pm.expect(pm.response.text()).to.include(\"type\");",
+									"                pm.expect(pm.response.text()).to.include(\"network\");",
+									"            ",
+									"            pm.expect(pm.response.text()).to.include(\"configuration\");",
+									"                pm.expect(pm.response.text()).to.include(\"name\");",
+									"                pm.expect(pm.response.text()).to.include(\"bandwidth\");",
+									"                pm.expect(pm.response.text()).to.include(\"term\");",
+									"                pm.expect(pm.response.text()).to.include(\"monitoring\");",
+									"        });",
+									"            ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{quotes_url}}/quotes/get_location_quote_by_quote_id/{{quote_id}}",
+							"host": [
+								"{{quotes_url}}"
+							],
+							"path": [
+								"quotes",
+								"get_location_quote_by_quote_id",
+								"{{quote_id}}"
+							]
+						},
+						"description": "Call to /quotes microservice"
+					},
+					"response": []
+				},
+				{
+					"name": "CAPtain/quotes/get_service_quote_by_quote_id/{{quote_id}}",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "baad007c-31fb-4571-970e-43d485a945e4",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://jsrdnxbz9a.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//functions to call are pm.environment.get(\"quotes_url\"); and pm.environment.set(\"quote_id\", \"1185336\");",
+									"pm.environment.get(\"quotes_url\");",
+									"",
+									"pm.environment.set(\"quote_id\", \"1185336\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "df153239-28ef-4656-977c-2ec57901163b",
+								"exec": [
+									"//selected environment variables (URL) which are currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://jsrdnxbz9a.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//functions to call are pm.environment.get(\"quotes_url\"); and pm.environment.set(\"quote_id\", \"1185336\");",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,500) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"        ",
+									"        pm.test(\"JSON BODY VALIDATION\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"quote_status\");",
+									"            ",
+									"            pm.expect(pm.response.text()).to.include(\"location\");",
+									"                pm.expect(pm.response.text()).to.include(\"location_id\");",
+									"                pm.expect(pm.response.text()).to.include(\"name\");",
+									"                pm.expect(pm.response.text()).to.include(\"building_name\");",
+									"                pm.expect(pm.response.text()).to.include(\"street\");",
+									"                pm.expect(pm.response.text()).to.include(\"city\");",
+									"                pm.expect(pm.response.text()).to.include(\"province_state\");",
+									"                pm.expect(pm.response.text()).to.include(\"country\");",
+									"                pm.expect(pm.response.text()).to.include(\"postal_code\");",
+									"                    ",
+									"            pm.expect(pm.response.text()).to.include(\"CSP\");",
+									"                pm.expect(pm.response.text()).to.include(\"csp_id\");",
+									"                pm.expect(pm.response.text()).to.include(\"csp_image\");",
+									"                pm.expect(pm.response.text()).to.include(\"csp_account_name\");",
+									"                pm.expect(pm.response.text()).to.include(\"type\");",
+									"                pm.expect(pm.response.text()).to.include(\"csp_service_key\");",
+									"                pm.expect(pm.response.text()).to.include(\"destination_id\");",
+									"                pm.expect(pm.response.text()).to.include(\"destination_name\");",
+									"                pm.expect(pm.response.text()).to.include(\"street\");",
+									"                pm.expect(pm.response.text()).to.include(\"city\");",
+									"                pm.expect(pm.response.text()).to.include(\"province_state\");",
+									"                pm.expect(pm.response.text()).to.include(\"country\");",
+									"                pm.expect(pm.response.text()).to.include(\"postal_code\");",
+									"            ",
+									"            pm.expect(pm.response.text()).to.include(\"configuration\");",
+									"                pm.expect(pm.response.text()).to.include(\"name\");",
+									"                pm.expect(pm.response.text()).to.include(\"bandwidth\");",
+									"                pm.expect(pm.response.text()).to.include(\"term\");",
+									"                pm.expect(pm.response.text()).to.include(\"product_category\");",
+									"                pm.expect(pm.response.text()).to.include(\"product\");",
+									"        });",
+									"            ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{quotes_url}}/quotes/get_service_quote_by_quote_id/{{quote_id}}",
+							"host": [
+								"{{quotes_url}}"
+							],
+							"path": [
+								"quotes",
+								"get_service_quote_by_quote_id",
+								"{{quote_id}}"
+							]
+						},
+						"description": "Call to /quotes microservice"
+					},
+					"response": []
+				},
+				{
+					"name": "CAPtain/quotes/get_quotes_by_sfid/{{sfid}}",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "baad007c-31fb-4571-970e-43d485a945e4",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://jsrdnxbz9a.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//functions to call are pm.environment.get(\"quotes_url\"); and pm.environment.set(\"sfid\", \"a0b6000000KPEgAAAX\");",
+									"pm.environment.get(\"quotes_url\");",
+									"",
+									"pm.environment.set(\"sfid\", \"a0b6000000KPEgAAAX\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "df153239-28ef-4656-977c-2ec57901163b",
+								"exec": [
+									"//selected environment variables (URL) which are currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://jsrdnxbz9a.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//functions to call are pm.environment.get(\"quotes_url\"); and pm.environment.set(\"sfid\", \"a0b6000000KPEgAAAX\");",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,500) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"        ",
+									"        pm.test(\"JSON BODY VALIDATION\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"locations\");",
+									"                pm.expect(pm.response.text()).to.include(\"quote_id\");",
+									"                pm.expect(pm.response.text()).to.include(\"quote_status\");",
+									"                pm.expect(pm.response.text()).to.include(\"building_name\");",
+									"                pm.expect(pm.response.text()).to.include(\"demarc\");",
+									"                pm.expect(pm.response.text()).to.include(\"name\");",
+									"                pm.expect(pm.response.text()).to.include(\"bandwidth\");",
+									"                pm.expect(pm.response.text()).to.include(\"term\");",
+									"                pm.expect(pm.response.text()).to.include(\"monthly_cost\");",
+									"                pm.expect(pm.response.text()).to.include(\"one_time_cost\");",
+									"                    ",
+									"            pm.expect(pm.response.text()).to.include(\"services\");",
+									"                pm.expect(pm.response.text()).to.include(\"quote_id\");",
+									"                pm.expect(pm.response.text()).to.include(\"quote_status\");",
+									"                pm.expect(pm.response.text()).to.include(\"bandwidth\");",
+									"                pm.expect(pm.response.text()).to.include(\"csp_account_name\");",
+									"                pm.expect(pm.response.text()).to.include(\"name\");",
+									"                pm.expect(pm.response.text()).to.include(\"location_name\");",
+									"                pm.expect(pm.response.text()).to.include(\"product_group\");",
+									"                pm.expect(pm.response.text()).to.include(\"product\");",
+									"                pm.expect(pm.response.text()).to.include(\"term\");",
+									"                pm.expect(pm.response.text()).to.include(\"monthly_cost\");",
+									"                pm.expect(pm.response.text()).to.include(\"one_time_cost\");",
+									"        });",
+									"            ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{quotes_url}}/quotes/get_quotes_by_sfid/{{sfid}}",
+							"host": [
+								"{{quotes_url}}"
+							],
+							"path": [
+								"quotes",
+								"get_quotes_by_sfid",
+								"{{sfid}}"
+							]
+						},
+						"description": "Call to /quotes microservice"
+					},
+					"response": []
+				},
+				{
+					"name": "CAPtain/quotes/get_costs",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "33415e5a-4418-4336-b146-e8784ac25aad",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://jsrdnxbz9a.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"",
+									"pm.environment.set(\"quote_id\", \"a0a100000001ab1\");",
+									"pm.environment.set(\"service_id\", null);",
+									"pm.environment.set(\"bandwidth\", \"1 Gbps\");",
+									"pm.environment.set(\"term\", \"12 months\");",
+									"",
+									"pm.environment.get(\"quotes_url\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "47a9b4c2-2b89-42ed-8d08-dfb4469df1cb",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://jsrdnxbz9a.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//function to call is pm.environment.get(\"quotes_url\")",
+									"",
+									"//environment variables dynamically set via JSON body (\"quote_id\" : \"a0a100000001ab1\", \"service_id\" : \"null\", \"bandwidth\" : \"1 Gbps\", \"term\" : \"12 months\") for stubbed test case",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,201,202) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Successful POST request\", function () {",
+									"            pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+									"        });",
+									"        ",
+									"        pm.test(\"POST request - Response body validation\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"monthly_cost\");",
+									"            pm.expect(pm.response.text()).to.include(\"one_time_cost\");",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"        ",
+									"        ",
+									"            ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"quote_id\" : \"{{quote_id}}\",\r\n  \"service_id\" : \"{{service_id}}\",\r\n  \"bandwidth\" : \"{{bandwidth}}\",\r\n  \"term\" : \"{{term}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{quotes_url}}/quotes/get_costs",
+							"host": [
+								"{{quotes_url}}"
+							],
+							"path": [
+								"quotes",
+								"get_costs"
+							]
+						},
+						"description": "Call to /quotes microservice"
+					},
+					"response": []
+				},
+				{
+					"name": "CAPtain/quotes/create_location_quote",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "33415e5a-4418-4336-b146-e8784ac25aad",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://jsrdnxbz9a.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"",
+									"pm.environment.set(\"sfid\", \"0010a00001abcdef\");",
+									"pm.environment.set(\"building_id\", \"a0a100000001ab1\");",
+									"pm.environment.set(\"demarc_id\", \"a0b10000001A1a1\");",
+									"pm.environment.set(\"name\", \"Port Pop 1\");",
+									"pm.environment.set(\"bandwidth\", \"10 Gbps\");",
+									"pm.environment.set(\"term\", \"12 Months\");",
+									"pm.environment.set(\"monitoring\", \"yes\");",
+									"",
+									"pm.environment.get(\"quotes_url\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "47a9b4c2-2b89-42ed-8d08-dfb4469df1cb",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://jsrdnxbz9a.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//function to call is pm.environment.get(\"quotes_url\")",
+									"",
+									"//environment variables dynamically set via JSON body (\"sfid\" : \"0010a00001abcdef\", \"building_id\" : \"a0a100000001ab1\", \"demarc_id\" : \"a0b10000001A1a1\", \"name\" : \"Port Pop 1\", \"bandwidth\" : \"10 Gbps\", \"term\" : \"12 Months\", \"monitoring\" : \"yes\") for stubbed test case",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,201,202) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Successful POST request\", function () {",
+									"            pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+									"        });",
+									"        ",
+									"        pm.test(\"POST request - Response body validation\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"quote_id\");",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"        ",
+									"        ",
+									"            ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"sfid\" : \"{{sfid}}\",\r\n  \"building_id\" : \"{{building_id}}\",\r\n  \"demarc_id\" : \"{{demarc_id}}\",\r\n  \"name\" : \"{{name}}\",\r\n  \"bandwidth\" : \"{{bandwidth}}\",\r\n  \"term\" : \"{{term}}\",\r\n  \"monitoring\" : \"{{monitoring}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{quotes_url}}/quotes/create_location_quote",
+							"host": [
+								"{{quotes_url}}"
+							],
+							"path": [
+								"quotes",
+								"create_location_quote"
+							]
+						},
+						"description": "Call to /quotes microservice"
+					},
+					"response": []
+				},
+				{
+					"name": "CAPtain/quotes/create_service_quote",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "33415e5a-4418-4336-b146-e8784ac25aad",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://jsrdnxbz9a.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"",
+									"pm.environment.set(\"sfid\", \"0010a00001abcdef\");",
+									"pm.environment.set(\"location_id\", \"00a100000001ab1\");",
+									"pm.environment.set(\"csp_account_id\", \"00b100000001ab1\");",
+									"pm.environment.set(\"demarc_id\", \"a0b10000001A1a1\");",
+									"pm.environment.set(\"destination_id\", \"z0b10000001A1a1\");",
+									"pm.environment.set(\"destination_type\", \"Hosted\");",
+									"pm.environment.set(\"name\", \"Port Pop 1 AWS\");",
+									"pm.environment.set(\"bandwidth\", \"1 Gbps\");",
+									"pm.environment.set(\"term\", \"Month-to-Month\");",
+									"pm.environment.set(\"product\", \"Ethernet\");",
+									"pm.environment.set(\"csp_service_key\", \"123456-789-789404890\");",
+									"",
+									"pm.environment.get(\"quotes_url\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "47a9b4c2-2b89-42ed-8d08-dfb4469df1cb",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://jsrdnxbz9a.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//function to call is pm.environment.get(\"quotes_url\")",
+									"",
+									"//environment variables dynamically set via JSON body (\"sfid\" : \"0010a00001abcdef\", \"location_id\" : \"00a100000001ab1\", \"csp_account_id\" : \"00b100000001ab1\", \"demarc_id\" : \"a0b10000001A1a1\", \"destination_id\" : \"z0b10000001A1a1\", \"destination_type\" : \"Hosted\", \"name\" : \"Port Pop 1 AWS\", \"bandwidth\" : \"1 Gbps\", \"term\" : \"Month-to-Month\", \"product\" : \"Ethernet\", \"csp_service_key\" : \"123456-789-789404890\") for stubbed test case",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,201,202) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Successful POST request\", function () {",
+									"            pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+									"        });",
+									"        ",
+									"        pm.test(\"POST request - Response body validation\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"quote_id\");",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"    ",
+									"    ",
+									"        ",
+									"    }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"sfid\" : \"{{sfid}}\",\r\n  \"location_id\" : \"{{location_id}}\",\r\n  \"csp_account_id\" : \"{{csp_account_id}}\",\r\n  \"demarc_id\" : \"{{demarc_id}}\",\r\n  \"destination_id\" : \"{{destination_id}}\",\r\n  \"destination_type\" : \"{{destination_type}}\",\r\n  \"name\" : \"{{name}}\",\r\n  \"bandwidth\" : \"{{bandwidth}}\",\r\n  \"term\" : \"{{term}}\",\r\n  \"product\" : \"{{product}}\",\r\n  \"csp_service_key\" : \"{{csp_service_key}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{quotes_url}}/quotes/create_service_quote",
+							"host": [
+								"{{quotes_url}}"
+							],
+							"path": [
+								"quotes",
+								"create_service_quote"
+							]
+						},
+						"description": "Call to /quotes microservice"
+					},
+					"response": []
+				},
+				{
+					"name": "CAPtain/quotes/update_quote/{{quote_id}}",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "db17af9a-e25d-4a54-a5a3-b1d48e78de64",
+								"exec": [
+									"//selected environment variables (URL) which are currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://jsrdnxbz9a.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//functions to call are pm.environment.get(\"quotes_url\"); and pm.environment.set(\"quote_ids\", \"1185336\");",
+									"",
+									"pm.environment.set(\"sfid\", \"0010a00001abcdef\");",
+									"pm.environment.set(\"location_id\", \"00a100000001ab1\");",
+									"pm.environment.set(\"building_id\", null);",
+									"pm.environment.set(\"csp_account_id\", \"00b100000001ab1\");",
+									"pm.environment.set(\"demarc_id\", \"a0b10000001A1a1\");",
+									"pm.environment.set(\"destination_id\", \"z0b10000001A1a1\");",
+									"pm.environment.set(\"destination_type\", \"Hosted\");",
+									"pm.environment.set(\"name\", \"Port Pop 1 AWS\");",
+									"pm.environment.set(\"bandwidth\", \"1 Gbps\");",
+									"pm.environment.set(\"term\", \"Month-to-Month\");",
+									"pm.environment.set(\"product\", \"Ethernet\");",
+									"pm.environment.set(\"monitoring\", null);",
+									"pm.environment.set(\"csp_service_key\", \"123456-789-789404890\");",
+									"",
+									"pm.environment.get(\"quotes_url\");",
+									"",
+									"pm.environment.set(\"quote_id\", \"1185336\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "9820e416-e980-45e4-a099-4a7c63d2b21e",
+								"exec": [
+									"//selected environment variables (URL) which are currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://jsrdnxbz9a.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//functions to call are pm.environment.get(\"quotes_url\"); and pm.environment.set(\"quote_id\", \"1185336\");",
+									"",
+									"//environment variables dynamically set via JSON body (\"sfid\" : \"0010a00001abcdef\", \"location_id\" : \"00a100000001ab1\", \"building_id\" : \"null\", \"csp_account_id\" : \"00b100000001ab1\", \"demarc_id\" : \"a0b10000001A1a1\", \"destination_id\" : \"z0b10000001A1a1\", \"destination_type\" : \"Hosted\", \"name\" : \"Port Pop 1 AWS\", \"bandwidth\" : \"1 Gbps\", \"term\" : \"Month-to-Month\", \"product\" : \"Ethernet\", \"monitoring\" : \"null\", \"csp_service_key\" : \"123456-789-789404890\") for stubbed test case",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,201,202) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Successful PUT request\", function () {",
+									"            pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+									"        });",
+									"        ",
+									"        pm.test(\"PUT request - Response body validation\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"Quote updated\");",
+									"            pm.expect(pm.response.text()).to.include(pm.environment.get('quote_id'));",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"    ",
+									"    ",
+									"        ",
+									"    }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"sfid\" : \"{{sfid}}\",\n  \"location_id\" : \"{{location_id}}\",\n  \"building_id\" : \"{{building_id}}\",\n  \"csp_account_id\" : \"{{csp_account_id}}\",\n  \"demarc_id\" : \"{{demarc_id}}\",\n  \"destination_id\" : \"{{destination_id}}\",\n  \"destination_type\" : \"{{destination_type}}\",\n  \"name\" : \"{{name}}\",\n  \"bandwidth\" : \"{{bandwidth}}\",\n  \"term\" : \"{{term}}\",\n  \"product\" : \"{{product}}\",\n  \"monitoring\" : \"{{monitoring}}\",\n  \"csp_service_key\" : \"{{csp_service_key}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{quotes_url}}/quotes/update_quote/{{quote_id}}",
+							"host": [
+								"{{quotes_url}}"
+							],
+							"path": [
+								"quotes",
+								"update_quote",
+								"{{quote_id}}"
+							]
+						},
+						"description": "Call to /quotes microservice"
+					},
+					"response": []
+				},
+				{
+					"name": "CAPtain/quotes/remove_quotes_by_quote_ids",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "db17af9a-e25d-4a54-a5a3-b1d48e78de64",
+								"exec": [
+									"//selected environment variables (URL) which are currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://jsrdnxbz9a.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//functions to call are pm.environment.get(\"quotes_url\"); and pm.environment.set(\"quote_ids\", \"11234\");",
+									"",
+									"pm.environment.get(\"quotes_url\");",
+									"",
+									"pm.environment.set(\"quote_ids\", \"11234\");",
+									"",
+									"/*can also be set as array via JSON body (example below)",
+									"    {",
+									"        \"quote_ids\" : [",
+									"            \"11234\",",
+									"          \t\"11235\",",
+									"          \t\"11236\",",
+									"          \t\"11237\"",
+									"        ]",
+									"    }*/"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "9820e416-e980-45e4-a099-4a7c63d2b21e",
+								"exec": [
+									"//selected environment variables (URL) which are currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://jsrdnxbz9a.execute-api.us-east-2.amazonaws.com/Stage/api/v1/\"",
+									"//functions to call are pm.environment.get(\"quotes_url\"); and pm.environment.set(\"quote_ids\", \"11234\");",
+									"",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,201,202) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Successful PUT request\", function () {",
+									"            pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+									"        });",
+									"        ",
+									"        pm.test(\"PUT request - Response body validation\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"Quote has been removed\");",
+									"            pm.expect(pm.response.text()).to.include(pm.environment.get('quote_ids'));",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"        ",
+									"        ",
+									"            ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"quote_ids\" : \"{{quote_ids}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{quotes_url}}/quotes/remove_quotes_by_quote_ids",
+							"host": [
+								"{{quotes_url}}"
+							],
+							"path": [
+								"quotes",
+								"remove_quotes_by_quote_ids"
+							]
+						},
+						"description": "Call to /quotes microservice"
+					},
+					"response": []
+				}
+			],
+			"description": "Calls to /quotes microservice Swagger API stubs. Current URL path is fixed to a Quote ID and SFID for initial test script generation purposes (also passed as a path param via environmental variables set within the Pre-request script.)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9ae716e3-ccdd-4792-a6cc-4ece0fe2cb4f",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "7fc7c0f0-04ce-4d94-bb88-3141730b4d2a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "/orders",
+			"item": [
+				{
+					"name": "CAPtain/orders/get_orders_by_sfid/{{sfid}}",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "baad007c-31fb-4571-970e-43d485a945e4",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://jeff7p7cr3.execute-api.us-east-2.amazonaws.com/dev/api/v1\"",
+									"pm.environment.get(\"orders_url\");",
+									"",
+									"pm.environment.set(\"sfid\", \"0016000000unFcJAAU\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "df153239-28ef-4656-977c-2ec57901163b",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://jeff7p7cr3.execute-api.us-east-2.amazonaws.com/dev/api/v1\"",
+									"//functions to call are pm.environment.get(\"orders_url\"); and pm.environment.set(\"sfid\", \"a0b6000000KPEgAAAX\");",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,500) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"        ",
+									"        pm.test(\"JSON BODY VALIDATION\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"order_number\");",
+									"            pm.expect(pm.response.text()).to.include(\"order_date\");",
+									"            pm.expect(pm.response.text()).to.include(\"monthly_cost\");",
+									"            pm.expect(pm.response.text()).to.include(\"one_time_cost\");",
+									"            ",
+									"            pm.expect(pm.response.text()).to.include(\"quotes\");",
+									"                ",
+									"                pm.expect(pm.response.text()).to.include(\"services\");",
+									"                    pm.expect(pm.response.text()).to.include(\"quote_id\");",
+									"                    pm.expect(pm.response.text()).to.include(\"bandwidth\");",
+									"                    pm.expect(pm.response.text()).to.include(\"csp_account_name\");",
+									"                    pm.expect(pm.response.text()).to.include(\"name\");",
+									"                    pm.expect(pm.response.text()).to.include(\"location_name\");",
+									"                    pm.expect(pm.response.text()).to.include(\"product_group\");",
+									"                    pm.expect(pm.response.text()).to.include(\"product\");",
+									"                    pm.expect(pm.response.text()).to.include(\"term\");",
+									"                    pm.expect(pm.response.text()).to.include(\"monthly_cost\");",
+									"                    pm.expect(pm.response.text()).to.include(\"one_time_cost\");",
+									"                    ",
+									"                pm.expect(pm.response.text()).to.include(\"locations\");",
+									"                    pm.expect(pm.response.text()).to.include(\"quote_id\");",
+									"                    pm.expect(pm.response.text()).to.include(\"building_name\");",
+									"                    pm.expect(pm.response.text()).to.include(\"demarc\");",
+									"                    pm.expect(pm.response.text()).to.include(\"name\");",
+									"                    pm.expect(pm.response.text()).to.include(\"bandwidth\");",
+									"                    pm.expect(pm.response.text()).to.include(\"term\");",
+									"                    pm.expect(pm.response.text()).to.include(\"monthly_cost\");",
+									"                    pm.expect(pm.response.text()).to.include(\"one_time_cost\");",
+									"        });",
+									"            ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orders_url}}/orders/get_orders_by_sfid/{{sfid}}",
+							"host": [
+								"{{orders_url}}"
+							],
+							"path": [
+								"orders",
+								"get_orders_by_sfid",
+								"{{sfid}}"
+							]
+						},
+						"description": "Call to /orders microservice"
+					},
+					"response": []
+				},
+				{
+					"name": "CAPtain/orders/create_order",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "33415e5a-4418-4336-b146-e8784ac25aad",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://jeff7p7cr3.execute-api.us-east-2.amazonaws.com/dev/api/v1\"",
+									"",
+									"//environment variables set dynamically via JSON body (\"quote_id\" : \"123456789108979410\") for stubbed test case",
+									"",
+									"pm.environment.get(\"orders_url\");",
+									"",
+									"pm.environment.set(\"quote_id\", \"1185336\");",
+									"",
+									"//this one will be an array too"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "47a9b4c2-2b89-42ed-8d08-dfb4469df1cb",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://jeff7p7cr3.execute-api.us-east-2.amazonaws.com/dev/api/v1",
+									"//function to call is pm.environment.get(\"orders_url\");",
+									"",
+									"//environment variables set dynamically via JSON body (\"quote_id\" : \"123456789108979410\") for stubbed test case",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"if(responseCode.code === 200,201,202) {",
+									"    try{",
+									"    ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Successful POST request\", function () {",
+									"            pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+									"        });",
+									"        ",
+									"        pm.test(\"POST request - Response body validation\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"order_number\");",
+									"            pm.expect(pm.response.text()).to.include(\"date\");",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 2000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"        });",
+									"    ",
+									"    ",
+									"        ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"quote_id\" : \"{{quote_id}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{orders_url}}/orders/create_order",
+							"host": [
+								"{{orders_url}}"
+							],
+							"path": [
+								"orders",
+								"create_order"
+							]
+						},
+						"description": "Calls to /orders microservice"
+					},
+					"response": []
+				}
+			],
+			"description": "Calls to /orders microservice Swagger API stubs",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5da851e5-fac9-4f10-a116-308196f41e65",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "9a7b99ae-4dde-4234-bb8a-90cc86d0c5fa",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "/users",
+			"item": [
+				{
+					"name": "CAPtain/users/auth_user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "33415e5a-4418-4336-b146-e8784ac25aad",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://f58dmh4t25.execute-api.us-east-2.amazonaws.com/Prod/api/v1\"",
+									"",
+									"pm.environment.set(\"username\", \"tranzactdemo@zayo.com\");",
+									"pm.environment.set(\"password\", \"mockPassword\");",
+									"",
+									"pm.environment.get(\"users_url\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "47a9b4c2-2b89-42ed-8d08-dfb4469df1cb",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://f58dmh4t25.execute-api.us-east-2.amazonaws.com/Prod/api/v1\"",
+									"//function to call is pm.environment.get(\"users_url\");",
+									"",
+									"//environment variables dynamically set via JSON body (\"username\" : \"tranzactdemo@zayo.com\", \"password\" : \"mockPassword\") for stubbed test case",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,201,202) {",
+									"    try{",
+									"        ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Successful POST request\", function () {",
+									"            pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+									"        });",
+									"        ",
+									"        pm.test(\"POST request - Response body validation\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"status\");",
+									"            pm.expect(pm.response.text()).to.include(\"token\");",
+									"            pm.expect(pm.response.text()).to.include(\"exp\");",
+									"            pm.expect(pm.response.text()).to.include(\"name\");",
+									"            pm.expect(pm.response.text()).to.include(\"given_name\");",
+									"            pm.expect(pm.response.text()).to.include(\"family_name\");",
+									"            pm.expect(pm.response.text()).to.include(\"preferred_username\");",
+									"            pm.expect(pm.response.text()).to.include(\"email\");",
+									"            pm.expect(pm.response.text()).to.include(\"email_verified\");",
+									"            pm.expect(pm.response.text()).to.include(\"zoneinfo\");",
+									"            pm.expect(pm.response.text()).to.include(\"phone_number\");",
+									"            ",
+									"            pm.expect(pm.response.text()).to.include(\"address\");",
+									"                pm.expect(pm.response.text()).to.include(\"street_address\");",
+									"                pm.expect(pm.response.text()).to.include(\"locality\");",
+									"                pm.expect(pm.response.text()).to.include(\"region\");",
+									"                pm.expect(pm.response.text()).to.include(\"postal_code\");",
+									"                pm.expect(pm.response.text()).to.include(\"country\");",
+									"                ",
+									"            pm.expect(pm.response.text()).to.include(\"postal_code\");",
+									"            pm.expect(pm.response.text()).to.include(\"updated_at\");",
+									"            pm.expect(pm.response.text()).to.include(\"account_id\");",
+									"            pm.expect(pm.response.text()).to.include(\"contact_id\");",
+									"        });",
+									"        pm.test(\"Placeholder SLA - Response time is less than 3000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"        });",
+									"        ",
+									"        ",
+									"            ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\" : \"{{username}}\",\r\n  \"password\" : \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{users_url}}/users/auth_user",
+							"host": [
+								"{{users_url}}"
+							],
+							"path": [
+								"users",
+								"auth_user"
+							]
+						},
+						"description": "Calls to /users microservice"
+					},
+					"response": []
+				},
+				{
+					"name": "CAPtain/users/sign_out/{{email}}",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "baad007c-31fb-4571-970e-43d485a945e4",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://f58dmh4t25.execute-api.us-east-2.amazonaws.com/Prod/api/v1\"",
+									"//functions to call are pm.environment.get(\"users_url\"); and pm.environment.set(\"email\", \"tranzactdemo@zayo.com\");",
+									"",
+									"pm.environment.get(\"users_url\");",
+									"",
+									"pm.environment.set(\"email\", \"tranzactdemo@zayo.com\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "df153239-28ef-4656-977c-2ec57901163b",
+								"exec": [
+									"//selected environment variable (URL) which is currently defaulted to Swagger stubs for initial testing via Pre-request Script",
+									"//current stubbed URL is \"https://f58dmh4t25.execute-api.us-east-2.amazonaws.com/Prod/api/v1\"",
+									"//functions to call are pm.environment.get(\"users_url\"); and pm.environment.set(\"email\", \"tranzactdemo@zayo.com\"); for stubbed test case.. currently getting status 400 on this one, likely due to current stubs.. set as placeholder for initial test runs for now",
+									"",
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"",
+									"if(responseCode.code === 200,400) {",
+									"        try{",
+									"            ",
+									"        var jsonData = JSON.parse(responseBody);",
+									"        ",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"        pm.test(\"Response time is less than 3000ms\", function () {",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"        });",
+									"        ",
+									"        pm.test(\"JSON BODY VALIDATION\", function() {",
+									"            pm.expect(pm.response.text()).to.include(\"User successfully signed out from system\");",
+									"        });",
+									"            ",
+									"        }",
+									"",
+									"catch(error) {",
+									"    console.log(error);",
+									"",
+									"    //exit;",
+									"    ",
+									"    }    ",
+									"",
+									"}",
+									"",
+									"",
+									"//end tests "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{users_url}}/users/sign_out/{{email}}",
+							"host": [
+								"{{users_url}}"
+							],
+							"path": [
+								"users",
+								"sign_out",
+								"{{email}}"
+							]
+						},
+						"description": "Call to /users microservice"
+					},
+					"response": []
+				}
+			],
+			"description": "Calls to /users microservice Swagger API stubs",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5da851e5-fac9-4f10-a116-308196f41e65",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "9a7b99ae-4dde-4234-bb8a-90cc86d0c5fa",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "6da7790a-d9f1-47a0-8d75-ecc62a306202",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "75e3d566-5a40-41d1-982b-20f433fac0e7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
