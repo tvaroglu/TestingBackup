@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Varoglu Portfolio</title>
+
+<style>
+
+body {
+  background-color: rgba(73, 10, 190, 0.95);
+  position: absolute;
+  bottom: 0px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  overflow-y:scroll;
+}
+
+h1#header {
+  color: rgb(5, 5, 73);
+  font-family: verdana;
+  background-color: orange;
+  text-align: center;
+  font-style: italic;
+  border: 3px dashed rgba(0, 0, 0, 0.55);
+  border-radius: 10px;
+  font-size: 150%;
+  width: 99%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  margin-top: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+  overflow: hidden;
+}
+
+.p01  {
+  color: rgba(200, 244, 250, 0.8);
+  background-color: transparent;
+  font-family: verdana;
+  font-size: 100%;
+  border: 0px;
+  margin: 5px;
+  padding: 5px;
+  overflow: auto;
+  width: 275px;
+  font-style: italic;
+}
+
+#ul01 {
+  font-family: verdana;
+  font-size: 98%;
+  margin: 5px;
+  color: rgb(105, 0, 0);
+  list-style-type: none;
+}
+
+#ul02 {
+  font-family: verdana;
+  font-size: 100%;
+  margin: 5px;
+  color: rgb(105, 0, 0);
+  list-style-type: square;
+}
+
+
+#ulNAVBAR {
+  list-style-type: none;
+  width: 99.5%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 50px;
+  padding: 0px;
+  overflow: hidden;
+  background-color: rgb(0,0,0);
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+#liNAVBAR {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 0px;
+  padding-right: 0px;
+  width: 150px;
+}
+
+a.standard:link, a.standard:visited {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
+  cursor: pointer;
+}  
+
+a.standard:hover, a.standard:active {
+  color: white;
+  background-color: transparent;
+  text-decoration: underline;
+  cursor: pointer;
+}  
+
+a.NAVBAR:link, a.NAVBAR:visited {
+  background-color: none;
+  color: white;
+  padding-top: 14px;
+  padding-bottom: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+  text-decoration: underline;
+  text-align: center;
+  cursor: pointer;
+}
+
+a.NAVBAR:hover, a.NAVBAR:active {
+  background-color: rgb(50,50,50);
+  border: 1px solid rgb(200,40,40);
+  color: white;
+  padding-top: 14px;
+  padding-bottom: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+  text-decoration: underline;
+  text-align: center;
+  cursor: pointer;
+}
+
+
+#button01 {
+  color: blue;
+  font-family: verdana;
+  background-color: orange;
+  text-align: center;
+  border: 2px dotted purple;
+  font-size: 80%;
+  font-style: italic;
+  width: 140px;
+  padding: 2px;
+}
+
+
+.accordion {
+  background-color:transparent;
+  color: rgb(255, 255, 255);
+  border-radius: 20px;
+  border: 1px solid black;
+  cursor: pointer;
+  padding: 10px;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 250px;
+  height: auto;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  float: none;
+}
+
+.accordion:hover {
+  background-color: rgba(0, 225, 255, 0.5);
+  border-radius: 20px; 
+}
+
+.panel {
+  overflow: hidden;
+  width: 420px;
+  height: auto;
+  padding: 20px;
+  border: 1px solid red;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 0px;
+  margin-right: 0px;
+  background-color: rgba(0, 204, 255, 0.55);
+  border-radius: 20px;
+  float: none;
+  display: block;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<h1 id="header"><u>Taylor Varoglu's Portfolio</u></h1>
+
+<hr style="margin:auto;padding:0px;width:99%">
+
+<ul id="ulNAVBAR">
+  <li id="liNAVBAR" title="Github profile"><a class="NAVBAR" href="https://github.com/tvaroglu" target="_blank">Work Samples</a></li>
+  <li id="liNAVBAR" title="Contact info"><a class="NAVBAR" onclick="displayContactInfo()">Contact</a></li>
+</ul>
+
+<script>
+    function displayContactInfo() {
+        alert("Taylor Varoglu\nmail to: Taylor.Varoglu@colorado.edu\n720-450-9001");
+    }
+</script>
+
+<button class="accordion"><em>Resume</em></button>
+
+        <div>
+
+              <img src="https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-9/84177575_10220012449649090_7683197043682050048_n.jpg?_nc_cat=111&_nc_ohc=hUFd8B6gk4QAX_vSXSu&_nc_ht=scontent-iad3-1.xx&oh=e11d160f7568330cf29f33d8c60184dd&oe=5ED52D40" alt="resume" style="width:auto; height:auto; border-radius:10px;"></img>
+
+        </div>
+
+
+<button class="accordion"><em>SFDC &amp; Internal Tools (Python)</em></button>
+
+        <div class="panel">
+
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1024px-Python-logo-notext.svg.png"
+              alt="Python Logo" id="python"
+              style="float:left;margin-right:5px;height:65px;border:0px;padding-right:5px;border-radius:5px;">
+
+              <ul id="ul01">
+                <li><a class="standard" href="https://github.com/tvaroglu/SFDCTools/blob/master/DataArchive.py" target="_blank">Data Archive (for Forecasting Automation)</a></li>
+                <li><a class="standard" href="https://github.com/tvaroglu/SFDCTools/blob/master/sfdcbulk.py" target="_blank">SFDC Bulk API Query</a></li>
+              </ul>
+            
+            <br>
+            <br>  
+            <hr style="margin:auto;padding:0px;width:auto"> 
+
+        </div>
+
+
+<button class="accordion"><em>QA &amp; Testing Scripts (JavaScript)</em></button>
+
+        <div class="panel">
+
+                <img src="https://nordicapis.com/wp-content/uploads/postman-logo-2.png"
+                alt="Postman Logo" id="postman"
+                style="float:left;margin-right:5px;height:60px;border:0px;padding-right:5px;border-radius:5px;">
+          
+              <ul id="ul01">
+                <li><a class="standard" href="https://github.com/tvaroglu/TestingBackup/blob/master/CAPtain-.postman_collection_ALL.json" target="_blank">Postman Functional Testing Collection</a></li>
+                <li><a class="standard" href="https://github.com/tvaroglu/TestingBackup/blob/master/k6-script_CAPtain_ALL.js" target="_blank">k6 Load Testing Script</a></li>
+                <li><a class="standard" href="https://github.com/tvaroglu/TestingBackup/blob/master/JSON_gen.py" target="_blank">JSON Dynamic Variable Generator</a></li>
+              </ul>
+
+            <br>      
+            <hr style="margin:auto;padding:0px;width:auto">  
+
+        </div>
+
+
+<div style="display:none">
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
+</script>
+</div>
+
+<br>
+<br>
+
+<p class="p01" id="contact">
+    <u>Contact Info:</u>
+      <br>
+      <br>
+    Taylor Varoglu
+      <br>
+    Taylor.Varoglu@colorado.edu
+      <br>
+    <a href="https://www.linkedin.com/in/taylorvaroglu/" target="_blank" style="color:rgba(200, 244, 250, 0.8);">LinkedIn</a>
+    <a href="https://github.com/tvaroglu" target="_blank" style="color:rgba(200, 244, 250, 0.8);">Github</a>
+</p>
+
+</body>
+</html>
