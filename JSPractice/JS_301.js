@@ -1041,18 +1041,21 @@ function removeProperty(obj, key) {
   return obj;
 };
 
-let object = {name: 'taylor'};
+let myObject = {name: 'taylor'};
 let key = 'name';
 
-console.log(removeProperty(object, key));
+console.log(removeProperty(myObject, key));
+
 
 function iterateOverObject(obj) {
 	let input = obj.keys;
 	return input;
 };
 
-let object = {name: 'taylor', hair: 'brown'};
-console.log(iterateOverObject(object));
+let myOtherObject = {name: 'taylor', hair: 'brown'};
+console.log(iterateOverObject(myOtherObject));
+
+
 
 function or(expression1, expression2) {
   if (expression1 == true && expression2 == false) {
