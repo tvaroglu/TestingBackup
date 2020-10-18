@@ -1,3 +1,313 @@
+function select(obj, keys) {
+  let outputObj = {};
+  for (var i = 0; i < keys.length; i++) {
+	  if (keys[i] in obj) {
+		  outputObj[keys[i]] = obj[keys[i]];
+	  };
+  };
+  return outputObj;
+}
+
+let test1 = select({a: 1, b: 2, c: 3}, ["a"]); // => {a: 1}
+let test2 = select({a: 1, b: 2, c: 3}, ["a", "c"]); // => {a: 1, c: 3}
+let test3 = select({a: 1, b: 2, c: 3}, ["a", "c", "d"]); // => {a: 1, c: 3}
+
+console.log(test1, test2, test3);
+
+
+
+Object.keys({a: 1, b: 2});
+
+
+
+
+function extend(obj1, obj2) {
+	let outputObj = {};
+	for (var keyFromObj1 in obj1) {
+		outputObj[keyFromObj1] = obj1[keyFromObj1];
+		for (var keyFromObj2 in obj2) {
+			if (obj2[keyFromObj2] in obj1 === false) {
+				outputObj[keyFromObj2] = obj2[keyFromObj2];
+			};
+		};
+	};
+	return outputObj;
+}
+	
+
+let actual1 = extend({a: 1}, {b: 2}); // => {a: 1, b: 2}
+let expected1 = {a: 1, b: 2};
+let actual2 = extend({a: 1, c: 3}, {b: 2, c: 4}); // => {a: 1, b: 2, c: 4}
+let expected2 = {a: 1, b: 2, c: 4};
+
+function assertObjectsEqual(actual, expected, testName) {
+	let success = 'passed';
+	let failure = `failed [${testName}] : expected "${JSON.stringify(expected)}" but got "${JSON.stringify(actual)}"`;
+	if (JSON.stringify(actual) === JSON.stringify(expected)) {
+		console.log(success);
+	} else {
+		console.log(failure);
+	};
+};
+
+console.log(assertObjectsEqual(actual1, expected1, "objects are correctly extended"));
+console.log(assertObjectsEqual(actual2, expected2, "objects are correctly extended"));
+
+
+
+
+
+var dirtyObject = {
+  _fht: 192492,
+  name: "Alyssa P. Hacker",
+  age: 26,
+  numberOfPets: 3,
+  _byz: 939205,
+  _ttrs: 510852
+};
+
+function clean(obj) {
+  for (var keyFromObj in obj) {
+	  let keyStr = keyFromObj.toString();
+	  if (keyStr.indexOf('_') !== -1) {
+		  delete obj[keyFromObj];
+	  };
+  };
+  return obj;
+}
+
+clean(dirtyObject);
+
+function removeOddValues(object) {
+	for (var keyFromObject in object) {
+		if (typeof object[keyFromObject] === 'number' && Number.isInteger(object[keyFromObject] / 2) === false) {
+			delete object[keyFromObject];
+		};
+	};
+	return object;
+}
+
+
+
+function countWords(words) {
+	let inputStr = words.split(" ");
+	let outputObj = {};
+	for (var i = 0; i < inputStr.length; i++) {
+		let word = inputStr[i].toLowerCase();
+		if (word in outputObj === false) {
+			outputObj[word] = 1;
+		} else {
+			outputObj[word] += 1;
+		};
+	};
+	return outputObj;
+}
+
+function countCharacters(string) {
+	let countObj = {};
+	for (var j = 0; j < string.length; j++) {
+		let character = string[j];
+		if (character in countObj === false) {
+			countObj[character] = 1;
+		} else {
+			countObj[character] += 1;
+		};
+	};
+	return countObj;
+}
+
+
+
+
+
+var alyssa = {
+  name: {
+    first: "Alyssa",
+    middle: "P.",
+    last: "Hacker"
+  },
+  age: 26
+};
+
+function fullName(person) {
+  if (person.name.first !== undefined && person.name.middle !== undefined && person.name.last !== undefined) {
+	  person.name.fullName = person.name.first + " " + person.name.middle + " " + person.name.last;
+  } else if (person.name.first !== undefined && person.name.last !== undefined) {
+	  person.name.fullName = person.name.first + " " + person.name.last;
+  };
+  return person;
+}
+
+// console.log(fullName(alyssa)); // => "Alyssa P. Hacker"
+
+
+var people = [
+  {name: {first: "Alyssa", middle: "P.", last: "Hacker"}, age: 26},
+  {name: {first: "Ben", last: "Bitdiddle"}, age: 34},
+  {name: {first: "Eva", middle: "Lu", last: "Ator"}, age: 40},
+  {name: {first: "Lem", middle: "E.", last: "Tweakit"}, age: 45},
+  {name: {first: "Louis", last: "Reasoner"}, age: 21}
+];
+
+var taylor = {
+  name: {
+    first: "Taylor",
+    middle: "N.",
+    last: "Varoglu"
+  },
+  age: 29
+};
+
+people.push(taylor);
+
+function returnPeopleNames(array) {
+	let outputArr = [];
+	for (var i = 0; i < array.length; i++) {
+		let person = array[i];
+		let addFullName = fullName(person);
+		outputArr.push(person.name.fullName);
+	};
+	return outputArr;
+}
+
+function returnAveragePeopleAge(array) {
+	let result = 0;
+	for (var j = 0; j < array.length; j++) {
+		result += array[j].age;
+	};
+	return result / array.length;
+}
+
+function returnPeopleOlderThanX(array, targetAge) {
+	let resultArr = [];
+	for (var k = 0; k < array.length; k++) {
+		if (array[k].age > targetAge) {
+			resultArr.push(array[k]);
+		};
+	};
+	if (resultArr.length === 0) {
+		return undefined;
+	} else {
+		return resultArr;
+	};
+}
+
+console.log(returnPeopleOlderThanX(people, 30));
+
+
+
+
+function countChars(string, character) {
+	let result = 0;
+	for (var i = 0; i < string.length; i++) {
+		if (character === string[i]) {
+			result += 1;
+		};
+	};
+	return result;
+};
+
+console.log(countChars('hello', 'l'));
+
+
+function indexOf(string, character) {
+	for (var i = 0; i < string.length; i++) {
+		if (character === string[i]) {
+			return i;
+			break;
+		};
+	};
+};
+
+console.log(indexOf('hello', 'l'));
+
+
+
+//Skeleton
+function modulo(num1, num2) {
+	// if left operand is less than right, return the fraction numerator
+	if (num1 < num2) {
+		return num1;
+	};
+	let counter = 0;
+	// if no remainder, return 0
+	let check = Number.isInteger(num1/num2);
+	if (check) {
+		return 0;
+	} else {
+		// decrement until numbers are divisible by themselves (0 remainder)
+		while (num1 > num2) {
+			counter += 1;
+			num1 -= 1;
+			check = Number.isInteger(num1/num2);
+			// once divisible, break the loop to return the counter variable
+			if (check) {
+				break;
+			};
+		};
+	};
+	return counter;
+};
+
+//TestSuite
+let actualResult1 = modulo(8, 13);
+let expectedResult1 = 8 % 13;
+
+let actualResult2 = modulo(5, 2);
+let expectedResult2 = 5 % 2;
+
+let actualResult3 = modulo(7, 5);
+let expectedResult3 = 7 % 5;
+
+function assertEqual(actual, expected, testName) {
+	let success = "passed";
+	let failure = `failed [${testName}] : expected "${expected}", but got "${actual}"`;
+	if (actual === expected) {
+		console.log(success);
+	} else {
+		console.log(failure);
+	};
+};
+
+console.log(assertEqual(actualResult1, expectedResult1, "modulo is correctly calculated for fractions"));
+
+console.log(assertEqual(actualResult2, expectedResult2, "modulo is correctly calculated for divisible numbers"));
+
+console.log(assertEqual(actualResult3, expectedResult3, "modulo is correctly calculated for divisible numbers"));
+
+
+
+function stringLength(string) {
+	let counter = 0;
+	while (string !== "") {
+		counter += 1;
+		string = string.slice(1);
+	};
+	return counter;
+}
+
+console.log(stringLength('hello'));
+
+
+function computeNthFibonacciNumber(nth) {
+	let index = 0;
+	let a = 1, b = 0, counter;
+	if (nth === 0) {
+		return 1;
+	} else {
+		while (index <= nth) {
+			index += 1;
+			counter = a;
+			a = a + b;
+			b = counter;
+		};
+	};
+	return b;
+};
+
+console.log(computeNthFibonacciNumber(2));
+
+
 var customerData = {
   'Joe': {
     visits: 1
@@ -845,179 +1155,179 @@ console.log(factorial(5));
 
 
 function inc(x) {
-    return x + 1;
+  return x + 1;
+};
+
+function dec(x) {
+  return x - 1;
+};
+
+function add(x, y) {
+	if (x >= 0) {
+		while (x > 0) {
+			x = dec(x);
+			y = inc(y);
+		};
+		return y;
+	} else if (x < 0) {
+		while (x < 0) {
+			x = inc(x);
+			y = dec(y);
+		};
+		return y;
+	} else if (x === 0 && y === 0) {
+		return 0;
+	};
+};
+
+console.log(add(7,-2));
+
+
+
+//repeatString that takes two parameters: a string str, which is the string to be repeated, and count -- a number representing how many times the string s should be repeated, e.g.
+function repeatString(str, count) {
+  let counter = 0;
+  while(counter < count) {
+	  console.log(str);
+	  counter += 1;
   };
-  
-  function dec(x) {
-    return x - 1;
+  let result = `Done. String has been repeated ${counter} times.`;
+  return result;
+};
+
+// repeatString('dog', 0); // => ''
+// repeatString('dog', 1); // => 'dog'
+// repeatString('dog', 2); // => 'dogdog'
+// repeatString('dog', 3); // => 'dogdogdog'
+
+console.log(repeatString('Hello', 3));
+
+
+
+// Part 2 - Arrays:
+
+var animals = ["cat", "fox", "dog", "monkey"];
+// console.log(animals.indexOf('cat'));
+// console.log(animals[0]);
+// console.log(animals[3]);
+
+function retArr(arr, element) {
+	let size = arr.length;
+	let first = arr[0];
+	let last = arr[arr.length - 1];
+	let random = arr[element - 1];
+	if(element>size) {
+		let prompt = `Array is only ${size} items long. The last item in the array is "${last}" and it is at index[${size - 1}].`;
+		console.log(prompt);
+	} else if(element==0) {
+		let prompt = `You must pick a number greater than ${element}. The first item in the array is "${first}".`;
+		console.log(prompt);
+	} else {
+	return random;
+	};
+	return arr;
+};
+
+console.log(retArr(animals,6));
+
+
+function conj(element, arr) {
+	let check = arr.indexOf(element);
+	if(check == -1) {
+		arr.push(element);
+	};
+	return arr;
+};
+
+console.log(conj('squirrel', animals));
+
+
+//Functions to modify arrays:
+function modifyArr(arr, items) {
+	for(i = 0; i < items.length; i++) {
+		let item = items[i];
+		if(arr.indexOf(item) == -1) {
+			arr.push(item);
+		};
+	};
+	return arr;
+};
+
+var arr = [1,2,3];
+console.log(modifyArr(arr, [3, 4, 5]));
+
+
+//Write a function sum that computes the sum of the numbers in an array.
+function sumArr(arr) {
+  var result = 0;
+  for(i = 0; i < arr.length; i++) {
+    result += arr[i];
   };
-  
-  function add(x, y) {
-      if (x >= 0) {
-          while (x > 0) {
-              x = dec(x);
-              y = inc(y);
-          };
-          return y;
-      } else if (x < 0) {
-          while (x < 0) {
-              x = inc(x);
-              y = dec(y);
-          };
-          return y;
-      } else if (x === 0 && y === 0) {
-          return 0;
-      };
-  };
-  
-  console.log(add(7,-2));
-  
-  
-  
-  //repeatString that takes two parameters: a string str, which is the string to be repeated, and count -- a number representing how many times the string s should be repeated, e.g.
-  function repeatString(str, count) {
-    let counter = 0;
-    while(counter < count) {
-  	  console.log(str);
-  	  counter += 1;
-    };
-    let result = `Done. String has been repeated ${counter} times.`;
-    return result;
-  };
-  
-  // repeatString('dog', 0); // => ''
-  // repeatString('dog', 1); // => 'dog'
-  // repeatString('dog', 2); // => 'dogdog'
-  // repeatString('dog', 3); // => 'dogdogdog'
-  
-  console.log(repeatString('Hello', 3));
-  
-  
-  
-  // Part 2 - Arrays:
-  
-  var animals = ["cat", "fox", "dog", "monkey"];
-  // console.log(animals.indexOf('cat'));
-  // console.log(animals[0]);
-  // console.log(animals[3]);
-  
-  function retArr(arr, element) {
-  	let size = arr.length;
-  	let first = arr[0];
-  	let last = arr[arr.length - 1];
-  	let random = arr[element - 1];
-  	if(element>size) {
-  		let prompt = `Array is only ${size} items long. The last item in the array is "${last}" and it is at index[${size - 1}].`;
-  		console.log(prompt);
-  	} else if(element==0) {
-  		let prompt = `You must pick a number greater than ${element}. The first item in the array is "${first}".`;
-  		console.log(prompt);
-  	} else {
-  	return random;
-  	};
-  	return arr;
-  };
-  
-  console.log(retArr(animals,6));
-  
-  
-  function conj(element, arr) {
-  	let check = arr.indexOf(element);
-  	if(check == -1) {
-  		arr.push(element);
-  	};
-  	return arr;
-  };
-  
-  console.log(conj('squirrel', animals));
-  
-  
-  //Functions to modify arrays:
-  function modifyArr(arr, items) {
-  	for(i = 0; i < items.length; i++) {
-  		let item = items[i];
-  		if(arr.indexOf(item) == -1) {
-  			arr.push(item);
-  		};
-  	};
-  	return arr;
-  };
-  
-  var arr = [1,2,3];
-  console.log(modifyArr(arr, [3, 4, 5]));
-  
-  
-  //Write a function sum that computes the sum of the numbers in an array.
-  function sumArr(arr) {
-    var result = 0;
-    for(i = 0; i < arr.length; i++) {
-      result += arr[i];
-    };
-    return result;
-  };
-  
-  console.log(sumArr(arr));
-  
-  
-  //Write a function to determine if a number is even or odd.
-  function oddVsEven (number) {
-  	let checkInput = Number.isInteger(number);
-  	let result = number / 2;
-  	let checkResult = Number.isInteger(result);
-  	if(checkInput == false) {
-  		let prompt = `"${number}" is not an integer, please enter an integer instead.`;
-  		console.log(prompt);
-  	} else if(number == 0) {
-  		let prompt = `Please enter a number greater than ${number}.`;
-  		console.log(prompt);
-  	} else if(checkResult == false) {
-  		let prompt = `${number} is odd.`;
-  		console.log(prompt);
-  	} else {
-  		let prompt = `${number} is even.`;
-  		console.log(prompt);
-  	};
-  	return number;
-  };
-  
-  console.log(oddVsEven(6));
-  
-  
-  // var groupedIngredients = [];
-  // var allIngredients = [];
-  // var index = 0;
-  // while(index < groupedIngredients.length) {
-  // 	var shortList = groupedIngredients[index];
-  // 	allIngredients = allIngredients.concat(shortList);
-  // 	index++;
-  // };
-  
-  // allIngredients = [];
-  // for(var i = 0; i < groupedIngredients.length; i++) {
-  // 	var shortlist = groupedIngredients[i];
-  // 	for(var j = 0; j < shortList.length; j++) {
-  // 		var ingredient = shortList[j];
-  // 		if(allIngredients.indexOf(ingredient) == -1) {
-  // 			allIngredients.push(ingredient)
-  // 		};
-  // 	};
-  // };
-  
-  
-  // var tvShow = 'Narcos';
-  // let nameOutside = 'Taylor';
-  
-  // // Taylor
-  // var morningRoutine = {
-  //   coffee: 'cold brew',
-  //   meditate: true,
-  //   exercises: ['weights', 'jogging'],
-  //   checkEmails: true,
-  //   tvShow: 'Ozark'
-  //   };
-  // console.log(`Hi, my name is ${nameOutside}, and my morning routine involves ${morningRoutine.coffee} and ${morningRoutine.exercises} before work, but I'd rather just watch ${tvShow} instead!`);
-  
-  // for (var item in morningRoutine) {
-  // 	console.log(morningRoutine[item]);
-  // 	};
-  
+  return result;
+};
+
+console.log(sumArr(arr));
+
+
+//Write a function to determine if a number is even or odd.
+function oddVsEven (number) {
+	let checkInput = Number.isInteger(number);
+	let result = number / 2;
+	let checkResult = Number.isInteger(result);
+	if(checkInput == false) {
+		let prompt = `"${number}" is not an integer, please enter an integer instead.`;
+		console.log(prompt);
+	} else if(number == 0) {
+		let prompt = `Please enter a number greater than ${number}.`;
+		console.log(prompt);
+	} else if(checkResult == false) {
+		let prompt = `${number} is odd.`;
+		console.log(prompt);
+	} else {
+		let prompt = `${number} is even.`;
+		console.log(prompt);
+	};
+	return number;
+};
+
+console.log(oddVsEven(6));
+
+
+// var groupedIngredients = [];
+// var allIngredients = [];
+// var index = 0;
+// while(index < groupedIngredients.length) {
+// 	var shortList = groupedIngredients[index];
+// 	allIngredients = allIngredients.concat(shortList);
+// 	index++;
+// };
+
+// allIngredients = [];
+// for(var i = 0; i < groupedIngredients.length; i++) {
+// 	var shortlist = groupedIngredients[i];
+// 	for(var j = 0; j < shortList.length; j++) {
+// 		var ingredient = shortList[j];
+// 		if(allIngredients.indexOf(ingredient) == -1) {
+// 			allIngredients.push(ingredient)
+// 		};
+// 	};
+// };
+
+
+// var tvShow = 'Narcos';
+// let nameOutside = 'Taylor';
+
+// // Taylor
+// var morningRoutine = {
+//   coffee: 'cold brew',
+//   meditate: true,
+//   exercises: ['weights', 'jogging'],
+//   checkEmails: true,
+//   tvShow: 'Ozark'
+//   };
+// console.log(`Hi, my name is ${nameOutside}, and my morning routine involves ${morningRoutine.coffee} and ${morningRoutine.exercises} before work, but I'd rather just watch ${tvShow} instead!`);
+
+// for (var item in morningRoutine) {
+// 	console.log(morningRoutine[item]);
+// 	};
+
