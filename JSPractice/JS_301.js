@@ -552,7 +552,7 @@ console.log(output);
 function findShortestWordAmongMixedElements(arr) {
   let checkArr = [];
   let shellObj = {};
-  for (var i = 0; i<arr.length; i++) {
+  for (var i = 0; i < arr.length; i++) {
       if (typeof arr[i] === 'string') {
           checkArr.push(arr[i].length);
           shellObj[arr[i]] = arr[i].length;
@@ -561,9 +561,9 @@ function findShortestWordAmongMixedElements(arr) {
   if (checkArr.length === 0) {
       return '';
   } else {
-      let max = Math.max(...checkArr);
+      let min = Math.min(...checkArr);
       for (var valueFromShellObj in shellObj) {
-          if (shellObj[valueFromShellObj] === max) {
+          if (shellObj[valueFromShellObj] === min) {
               return valueFromShellObj;
           };
       };
