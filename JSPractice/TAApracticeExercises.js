@@ -1,4 +1,217 @@
 /*
+Binary search is a technique for very rapidly searching a sorted collection by cutting the search space in half at every pass.
+
+Given a sorted array, such as this:
+[1, 3, 16, 22, 31, 33, 34]
+
+You can search for the value 31, as follows:
+
+1) Pick the midpoint: 22.
+2) The value is higher than 22, so now consider only the right half of the previous array:
+[...31, 33, 34]
+3) Pick the midpoint: 33
+4) The value is lower than 33, so now consider only the left half of the previous array:
+[...31...]
+5) Pick the midpoint: 31
+6) You've hit the value.
+7) Return the index of the value.
+
+Notes:
+* If you don't find the value, you can return null.
+* If at any point you calculate the index of the midpoint and get a fractional number, just round it down ("floor" it).
+*/
+
+// Skeleton
+function binarySearchv1(arrayOfIntegers, targetInteger) {
+	//create variable alias(es)
+	let outputIndex = null;
+	let startIndex = 0;
+	//evaluate index of targetInteger within input array to find midpoint
+	let targetIndex = arrayOfIntegers.indexOf(targetInteger);
+	if (targetIndex === -1) {
+		return outputIndex;
+	} else {
+		//round midpoint down (floor it) if fractional value
+		let midPoint = Math.floor(arrayOfIntegers.length / 2);
+		//iterate through arrayOfIntegers beginning with final midpoint calc
+		if (targetIndex > midPoint) {
+			startIndex = midPoint;
+		};
+		for (var i = startIndex; i < arrayOfIntegers.length; i++) {
+			//set return variable to targetInteger index once found
+			if (arrayOfIntegers[i] === targetInteger) {
+				outputIndex = i;
+				//break
+				break;
+			};
+		};
+	};
+	//return targetInteger's index value
+	return outputIndex;
+};
+
+function binarySearch(arrayOfIntegers, targetInteger) {
+	// create variable aliases
+	let inputArr = [];
+	let outputIndex = null;
+	// define initial searchable area from cloned inputArray
+	inputArr = arrayOfIntegers;
+	// define initial min, max, and midpoint(floor for any fractions)
+	let max = inputArr.length - 1;
+	let min = inputArr.length - inputArr.length;
+	let mp = Math.floor((max+min)/2);
+	let retVal = inputArr[mp];
+	// remove edge cases
+	// if targetInteger is outside input array integer range
+	if (targetInteger < inputArr[min] || targetInteger > inputArr[max]) {
+		return null
+		return outputIndex;
+	// if targetInteger equals the min, max, or midpoint
+	} else if (targetInteger === inputArr[min]) {
+		outputIndex = min;
+	} else if (targetInteger === inputArr[max]) {
+		outputIndex = max;
+	} else if (targetInteger === retVal) {
+		outputIndex = mp;
+	// set output index to the corresponding value found above, otherwise
+	} else {
+		// re-define searchable area based on min, max, and mp
+		while (min < max) {
+			// check if targetInteger is greater vs less than mp
+			if (targetInteger > retVal) {
+				min = mp + 1;
+				mp = Math.floor((max+min)/2);
+				retVal = inputArr[mp];
+			} else if (targetInteger < retVal) {
+				max = mp - 1;
+				mp = Math.floor((max+min)/2);
+				retVal = inputArr[mp];
+			};
+		};
+	// if while loop hasn't ended without finding the targetInteger
+	if (targetInteger === retVal) {
+		// set outputIndex to midpoint index value
+		outputIndex = mp;
+	};
+	};
+	// return outputIndex
+	return outputIndex;
+};
+
+// TestSuite
+function assertEquals(actual, expected, testName) {
+	let success = `passed [${testName}] : expected "${expected}", and got "${actual}"`;
+	let failure = `FAILED [${testName}] : expected "${expected}", but got "${actual}"`;
+	if (actual === expected) {
+		return success;
+	} else {
+		return failure;
+	};
+};
+
+let actualBelowRange = binarySearch([1, 3, 16, 22, 31, 33, 34], 0);
+let expectedBelowRange = null;
+let testBelowRange = 'It correctly returns null when the target integer is below the input array integer range';
+console.log(assertEquals(actualBelowRange, expectedBelowRange, testBelowRange));
+
+let actualAboveRange = binarySearch([1, 3, 16, 22, 31, 33, 34], 35);
+let expectedAboveRange = null;
+let testAboveRange = 'It correctly returns null when the target integer is above the input array integer range';
+console.log(assertEquals(actualAboveRange, expectedAboveRange, testAboveRange));
+
+let actualNull = binarySearch([1, 3, 16, 22, 31, 33, 34], 4);
+let expectedNull = null;
+let testNull = 'It correctly returns null when the target integer is not found in the input array';
+console.log(assertEquals(actualNull, expectedNull, testNull));
+
+let actualMin = binarySearch([1, 3, 16, 22, 31, 33, 34], 1);
+let expectedMin = 0;
+let testMin = 'It correctly returns the min index value when the target integer is equal to the input array minimum value';
+console.log(assertEquals(actualMin, expectedMin, testMin));
+
+let actualMax = binarySearch([1, 3, 16, 22, 31, 33, 34], 34);
+let expectedMax = 6;
+let testMax = 'It correctly returns the max index value when the target integer is equal to the input array maximum value';
+console.log(assertEquals(actualMax, expectedMax, testMax));
+
+let actualMid = binarySearch([1, 3, 16, 22, 31, 33, 34], 22);
+let expectedMid = 3;
+let testMid = 'It correctly returns the floor midpoint index value when the target integer is equal to the input array midpoint value';
+console.log(assertEquals(actualMid, expectedMid, testMid));
+
+let actualRightOfMid = binarySearch([1, 3, 16, 22, 31, 33, 34], 31);
+let expectedRightOfMid = 4;
+let testRightOfMid = 'It correctly returns the target index value when the target integer is greater than the initial midpoint';
+console.log(assertEquals(actualRightOfMid, expectedRightOfMid, testRightOfMid));
+
+let actualLeftOfMid = binarySearch([1, 3, 16, 22, 31, 33, 34], 16);
+let expectedLeftOfMid = 2;
+let testLeftOfMid = 'It correctly returns the target index value when the target integer is less than the initial midpoint';
+console.log(assertEquals(actualLeftOfMid, expectedLeftOfMid, testLeftOfMid));
+
+
+
+
+
+/*
+Is one string a rotated version of another?
+
+For example:
+String 1: 'hello world'
+String 2: 'orldhello w'
+
+Extra hint: (click the drop down to ROT7 to see hint)
+
+If you double the string, you'll be able to find another string inside the doubled string using familiar String methods.
+
+Doubled string: 'hello worldhello world'
+Search w/in it: '       orldhello w    '
+*/
+
+//Skeleton
+function isRotated(stringOfStrings, subString) {
+	//create output boolean
+	var rotatedStrBoolean;
+	//split input strings on space
+	let inputStrSplit = stringOfStrings.split(' ');
+	//double each split string element and join indexes 2 and 3
+	let outputStr = inputStrSplit[0] + ' ' + inputStrSplit[1] + inputStrSplit[0] + ' ' + inputStrSplit[1];
+	//search joined string for substring
+	if (outputStr.includes(subString) === true) {
+		rotatedStrBoolean = true;
+	} else {
+		rotatedStrBoolean = false;
+	};
+	return rotatedStrBoolean;
+	//return output boolean
+}
+
+//TestSuite
+function assertEqual(actual, expected, testName) {
+	let success = `passed [${testName}] : expected "${expected}", and got "${actual}"`;
+	let failure = `FAILED [${testName}] : expected "${expected}", but got "${actual}"`;
+	if (actual === expected) {
+		return success;
+	} else {
+		return failure;
+	};
+};
+
+let actualTrue = isRotated('hello world', 'orldhello w');
+let expectedTrue = true;
+let testNameTrue = 'It returns true by finding the rotated versions of the input strings';
+console.log(assertEqual(actualTrue, expectedTrue, testNameTrue));
+
+let actualFalse = isRotated('helloworld', 'orldhello w');
+let expectedFalse = false;
+let testNameFalse = 'It returns false when the rotated versions of the input strings cannot be found';
+console.log(assertEqual(actualFalse, expectedFalse, testNameFalse));
+
+
+
+
+
+/*
 Given a list of non-negative integers and a target sum, find a pair of numbers that sums to the target sum.
 
 Example:
