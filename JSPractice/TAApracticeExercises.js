@@ -21,7 +21,7 @@ Notes:
 * If at any point you calculate the index of the midpoint and get a fractional number, just round it down ("floor" it).
 */
 
-// Skeleton
+//Skeleton
 function binarySearchv1(arrayOfIntegers, targetInteger) {
 	//create variable alias(es)
 	let outputIndex = null;
@@ -51,33 +51,33 @@ function binarySearchv1(arrayOfIntegers, targetInteger) {
 };
 
 function binarySearch(arrayOfIntegers, targetInteger) {
-	// create variable aliases
+	//create variable aliases
 	let inputArr = [];
 	let outputIndex = null;
-	// define initial searchable area from cloned inputArray
+	//define initial searchable area from cloned inputArray
 	inputArr = arrayOfIntegers;
-	// define initial min, max, and midpoint(floor for any fractions)
+	//define initial min, max, and midpoint(floor for any fractions)
 	let max = inputArr.length - 1;
 	let min = inputArr.length - inputArr.length;
 	let mp = Math.floor((max+min)/2);
 	let retVal = inputArr[mp];
-	// remove edge cases
-	// if targetInteger is outside input array integer range
+	//remove edge cases
+	//if targetInteger is outside input array integer range
 	if (targetInteger < inputArr[min] || targetInteger > inputArr[max]) {
-		return null
+		//return null
 		return outputIndex;
-	// if targetInteger equals the min, max, or midpoint
+	//if targetInteger equals the min, max, or midpoint
 	} else if (targetInteger === inputArr[min]) {
 		outputIndex = min;
 	} else if (targetInteger === inputArr[max]) {
 		outputIndex = max;
 	} else if (targetInteger === retVal) {
 		outputIndex = mp;
-	// set output index to the corresponding value found above, otherwise
+	//set output index to the corresponding value found above, otherwise
 	} else {
-		// re-define searchable area based on min, max, and mp
+		//re-define searchable area based on min, max, and mp
 		while (min < max) {
-			// check if targetInteger is greater vs less than mp
+			//check if targetInteger is greater vs less than mp
 			if (targetInteger > retVal) {
 				min = mp + 1;
 				mp = Math.floor((max+min)/2);
@@ -88,17 +88,17 @@ function binarySearch(arrayOfIntegers, targetInteger) {
 				retVal = inputArr[mp];
 			};
 		};
-	// if while loop hasn't ended without finding the targetInteger
+	//if while loop hasn't ended without finding the targetInteger
 	if (targetInteger === retVal) {
-		// set outputIndex to midpoint index value
+		//set outputIndex to midpoint index value
 		outputIndex = mp;
 	};
 	};
-	// return outputIndex
+	//return outputIndex
 	return outputIndex;
 };
 
-// TestSuite
+//TestSuite
 function assertEquals(actual, expected, testName) {
 	let success = `passed [${testName}] : expected "${expected}", and got "${actual}"`;
 	let failure = `FAILED [${testName}] : expected "${expected}", but got "${actual}"`;
@@ -169,7 +169,7 @@ Search w/in it: '       orldhello w    '
 */
 
 //Skeleton
-function isRotated(stringOfStrings, subString) {
+function isRotatedV1(stringOfStrings, subString) {
 	//create output boolean
 	var rotatedStrBoolean;
 	//split input strings on space
@@ -184,7 +184,31 @@ function isRotated(stringOfStrings, subString) {
 	};
 	return rotatedStrBoolean;
 	//return output boolean
-}
+};
+
+function isRotated(str1, str2) {
+	//create output boolean
+	let outputBoolean = false;
+	//iterate through str1
+	for (var i = 0; i < str1.length; i++) {
+		let currentChar = str1[i];
+		let counter = str1.length;
+		while (str1 !== str2 && counter !== 0) {
+			str1Dummy = str1.split("");
+			let newChar = str1Dummy.shift();
+			str1Dummy.push(newChar);
+			str1 = str1Dummy.join("");
+			counter -= 1;
+			if (str1 === str2) {
+				outputBoolean = true;
+				break;
+			};
+		};
+	};
+	//return output boolean
+	return outputBoolean;
+};
+
 
 //TestSuite
 function assertEqual(actual, expected, testName) {
