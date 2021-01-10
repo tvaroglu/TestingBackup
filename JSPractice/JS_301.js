@@ -1,3 +1,20 @@
+function average(numbers) {
+  // uses sum function
+  let arrayTotal = sum(numbers);
+  // returns the average of an array of numbers
+  return arrayTotal / numbers.length;
+};
+
+function sum(numbers) {
+  // returns the sum of an array of numbers
+  let result = 0;
+  for (var i = 0; i < numbers.length; i++) {
+      result += numbers[i];
+  };
+  return result;
+};
+
+
 function select(obj, keys) {
   let outputObj = {};
   for (var i = 0; i < keys.length; i++) {
