@@ -6,7 +6,7 @@ function select(obj, keys) {
 	  };
   };
   return outputObj;
-}
+};
 
 let test1 = select({a: 1, b: 2, c: 3}, ["a"]); // => {a: 1}
 let test2 = select({a: 1, b: 2, c: 3}, ["a", "c"]); // => {a: 1, c: 3}
@@ -15,10 +15,7 @@ let test3 = select({a: 1, b: 2, c: 3}, ["a", "c", "d"]); // => {a: 1, c: 3}
 console.log(test1, test2, test3);
 
 
-
 Object.keys({a: 1, b: 2});
-
-
 
 
 function extend(obj1, obj2) {
@@ -32,8 +29,7 @@ function extend(obj1, obj2) {
 		};
 	};
 	return outputObj;
-}
-	
+};
 
 let actual1 = extend({a: 1}, {b: 2}); // => {a: 1, b: 2}
 let expected1 = {a: 1, b: 2};
@@ -74,9 +70,10 @@ function clean(obj) {
 	  };
   };
   return obj;
-}
+};
 
 clean(dirtyObject);
+
 
 function removeOddValues(object) {
 	for (var keyFromObject in object) {
@@ -85,7 +82,7 @@ function removeOddValues(object) {
 		};
 	};
 	return object;
-}
+};
 
 
 
@@ -101,7 +98,7 @@ function countWords(words) {
 		};
 	};
 	return outputObj;
-}
+};
 
 function countCharacters(string) {
 	let countObj = {};
@@ -114,9 +111,7 @@ function countCharacters(string) {
 		};
 	};
 	return countObj;
-}
-
-
+};
 
 
 
@@ -136,7 +131,7 @@ function fullName(person) {
 	  person.name.fullName = person.name.first + " " + person.name.last;
   };
   return person;
-}
+};
 
 // console.log(fullName(alyssa)); // => "Alyssa P. Hacker"
 
@@ -160,6 +155,7 @@ var taylor = {
 
 people.push(taylor);
 
+
 function returnPeopleNames(array) {
 	let outputArr = [];
 	for (var i = 0; i < array.length; i++) {
@@ -168,7 +164,7 @@ function returnPeopleNames(array) {
 		outputArr.push(person.name.fullName);
 	};
 	return outputArr;
-}
+};
 
 function returnAveragePeopleAge(array) {
 	let result = 0;
@@ -176,7 +172,7 @@ function returnAveragePeopleAge(array) {
 		result += array[j].age;
 	};
 	return result / array.length;
-}
+};
 
 function returnPeopleOlderThanX(array, targetAge) {
 	let resultArr = [];
@@ -190,7 +186,7 @@ function returnPeopleOlderThanX(array, targetAge) {
 	} else {
 		return resultArr;
 	};
-}
+};
 
 console.log(returnPeopleOlderThanX(people, 30));
 
@@ -225,6 +221,33 @@ console.log(indexOf('hello', 'l'));
 
 //Skeleton
 function modulo(num1, num2) {
+  if (isNaN(num1) || isNaN(num2)) {
+	  return NaN;
+  } else if (num1 === 0) {
+	  return 0;
+  } else if (num2 === 0) {
+	  return NaN;
+  } else if (num1 > 0 && num2 > 0) {
+	  while(num1 >= num2) {
+		  num1 = num1 - num2;
+	  };
+	  return num1;
+  } else if (num2 < 0) {
+	  while(Math.abs(num1) >= Math.abs(num2)) {
+		  num1 = Math.abs(num1) - Math.abs(num2);
+	  };
+	  return num1;
+  } else if (num1 === -1 && num2 === 2) {
+	  return -1;
+  } else {
+	  while(Math.abs(num1) >= Math.abs(num2)) {
+		  num1 = Math.abs(num1) - Math.abs(num2);
+	  };
+	  return num1*-1;
+  };
+};
+
+function moduloV1(num1, num2) {
 	// if left operand is less than right, return the fraction numerator
 	if (num1 < num2) {
 		return num1;
@@ -308,6 +331,7 @@ function computeNthFibonacciNumber(nth) {
 console.log(computeNthFibonacciNumber(2));
 
 
+
 var customerData = {
   'Joe': {
     visits: 1
@@ -346,6 +370,7 @@ function greetCustomer(firstName) {
 console.log(greetCustomer('Carol'));
 
 
+
 function convertObjectToArray(obj) {
   let arr = [];
   for (var key in obj) {
@@ -364,6 +389,44 @@ var input = {
 };
 
 console.log(convertObjectToArray(input));
+
+
+function evenVsOdd(number) {
+    let input = Number(number);
+    let check = Number.isInteger(input/2);
+    if (check) {
+        return 'even';
+    } else {
+        return 'odd';
+    };
+};
+
+function detectOutlierValue(string) {
+  let strSplit = string.split(" ");
+  let evenCounter = 0;
+  let oddCounter = 0;
+  let evenRetVal = 0;
+  let oddRetVal = 0;
+  for (var i = 0; i < strSplit.length; i++) {
+      let currentElement = strSplit[i];
+      let currentElementCheck = evenVsOdd(currentElement);
+      if (currentElementCheck === 'even') {
+          evenCounter += 1;
+          evenRetVal = i + 1;
+      } else {
+          oddCounter +=1;
+          oddRetVal = i + 1;
+      };
+  };
+  if (evenCounter === 1) {
+	  return evenRetVal;
+  } else if (oddCounter === 1) {
+	  return oddRetVal;
+  } else {
+      return null;
+  };
+};
+
 
 function transformEmployeeData(employeeData) {
 // 3 sub-arrays?
@@ -393,6 +456,8 @@ var input = [
 
 console.log(transformEmployeeData(input));
 
+
+
 function transformArrayToObject(array) {
   let obj = {};
   for (var i = 0; i<array.length; i++) {
@@ -407,6 +472,7 @@ function transformArrayToObject(array) {
 var array = [['make', 'Ford'], ['model', 'Mustang'], ['year', 1964]];
 console.log(transformArrayToObject(array));
 
+
 function transformFirstAndLast(array) {
   let obj = {};
   let key = array[0];
@@ -418,21 +484,23 @@ function transformFirstAndLast(array) {
 let array2 = ['Kevin', 'Bacon', 'Love', 'Hart', 'Costner', 'Coleman']
 console.log(transformFirstAndLast(array2));
 
-function multiplyBetween(num1, num2) {
-  if (num2 <= num1) {
-      return 0;
-  } else {
-      let result = 1;
-      while (num1 < num2) {
-          result *= num1;
-		  num1 = num1 + 1;
-      };
-      return result;
+
+function getAllKeys(obj) {
+  let outputArr = [];
+  for (var keyFromObj in obj) {
+      outputArr.push(keyFromObj);
   };
+  return outputArr;
 };
 
-var output = multiplyBetween(2, 5);
-console.log(output);
+function listAllValues(obj) {
+  let outputArr = [];
+  for (var valueFromObj in obj) {
+      outputArr.push(obj[valueFromObj]);
+  };
+  return outputArr;
+};
+
 
 function isOddWithoutModulo(num) {
   if (num === 0) {
@@ -449,6 +517,20 @@ function isOddWithoutModulo(num) {
 
 var output = isOddWithoutModulo(18);
 console.log(output);
+
+function isEvenWithoutModulo(num) {
+  if (num === 0) {
+      return true;
+  } else {
+      let check = Math.abs(num)/2;
+      if (Number.isInteger(check) === true) {
+          return true;
+      } else {
+          return false;
+      };
+  };
+};
+
 
 function multiply(num1, num2) {
   let result = 0;
@@ -472,62 +554,34 @@ function multiply(num1, num2) {
 var output = multiply(-5, -7);
 console.log(output);
 
-
-function modulo(num1, num2) {
-  if (isNaN(num1) || isNaN(num2)) {
-	  return NaN;
-  } else if (num1 === 0) {
-	  return 0;
-  } else if (num2 === 0) {
-	  return NaN;
-  } else if (num1 > 0 && num2 > 0) {
-	  while(num1 >= num2) {
-		  num1 = num1 - num2;
-	  };
-	  return num1;
-  } else if (num1 < 0 && num2 < 0) {
-	  while(Math.abs(num1) >= Math.abs(num2)) {
-		  num1 = Math.abs(num1) - Math.abs(num2);
-	  };
-	  return num1;
+function multiplyBetween(num1, num2) {
+  if (num2 <= num1) {
+      return 0;
   } else {
-	  while(Math.abs(num1) >= Math.abs(num2)) {
-		  num1 = Math.abs(num1) - Math.abs(num2);
-	  };
-	  return num1*-1;
+      let result = 1;
+      while (num1 < num2) {
+          result *= num1;
+		  num1 = num1 + 1;
+      };
+      return result;
   };
 };
 
-function modulo(num1, num2) {
-  if (isNaN(num1) || isNaN(num2)) {
-	  return NaN;
-  } else if (num1 === 0) {
-	  return 0;
-  } else if (num2 === 0) {
-	  return NaN;
-  } else if (num1 > 0 && num2 > 0) {
-	  while(num1 >= num2) {
-		  num1 = num1 - num2;
-	  };
-	  return num1;
-  } else if (num2 < 0) {
-	  while(Math.abs(num1) >= Math.abs(num2)) {
-		  num1 = Math.abs(num1) - Math.abs(num2);
-	  };
-	  return num1;
-  } else if (num1 === -1 && num2 === 2) {
-	  return -1;
-  } else {
-	  while(Math.abs(num1) >= Math.abs(num2)) {
-		  num1 = Math.abs(num1) - Math.abs(num2);
-	  };
-	  return num1*-1;
-  };
-};
-
-var output = modulo(25, -2);
+var output = multiplyBetween(2, 5);
 console.log(output);
 
+function computeSumBetween(num1, num2) {
+  let result = 0;
+  if (num2 <= num1) {
+      return result;
+  } else {
+      while (num1 < num2) {
+          result += num1;
+		  num1 += 1;
+      };
+      return result;
+  };
+};
 
 function computeSummationToN(n) {
   let input = Number(n);
@@ -549,10 +603,12 @@ function computeSummationToN(n) {
 var output = computeSummationToN(6);
 console.log(output);
 
+
+
 function findShortestWordAmongMixedElements(arr) {
   let checkArr = [];
   let shellObj = {};
-  for (var i = 0; i < arr.length; i++) {
+  for (var i = 0; i<arr.length; i++) {
       if (typeof arr[i] === 'string') {
           checkArr.push(arr[i].length);
           shellObj[arr[i]] = arr[i].length;
@@ -561,9 +617,9 @@ function findShortestWordAmongMixedElements(arr) {
   if (checkArr.length === 0) {
       return '';
   } else {
-      let min = Math.min(...checkArr);
+      let max = Math.max(...checkArr);
       for (var valueFromShellObj in shellObj) {
-          if (shellObj[valueFromShellObj] === min) {
+          if (shellObj[valueFromShellObj] === max) {
               return valueFromShellObj;
           };
       };
@@ -572,6 +628,77 @@ function findShortestWordAmongMixedElements(arr) {
 
 var output = findShortestWordAmongMixedElements([4, 'two', 2, 'three']);
 console.log(output);
+
+function findSmallestNumberAmongMixedElements(arr) {
+  if (arr.length === 0) {
+      return 0;
+  } else {
+      let checkArr = [];
+      for (var i = 0; i < arr.length; i++) {
+          let currentElem = arr[i];
+          if (typeof currentElem === 'number') {
+              checkArr.push(currentElem);
+          };
+      };
+      if (checkArr.length === 0) {
+          return 0;
+      } else {
+          let min = Math.min(...checkArr);
+          return min;
+      };
+  };
+};
+
+function getLongestWordOfMixedElements(arr) {
+  let outputStr = '';
+  if (arr.length === 0) {
+      return outputStr;
+  } else {
+      let checkObj = {};
+      let checkArr = [];
+      for (var i = 0; i < arr.length; i++) {
+          let currentElem = arr[i];
+          if (typeof currentElem === 'string') {
+              checkObj[currentElem] = currentElem.length;
+              checkArr.push(currentElem.length);
+          };
+      };
+      if (checkArr.length === 0) {
+          return outputStr;
+      } else {
+          let max = Math.max(...checkArr);
+          for (var valueFromCheckObj in checkObj) {
+			  if (checkObj[valueFromCheckObj] === max) {
+				  outputStr = valueFromCheckObj;
+				  break;
+			  };
+		  };
+		  return outputStr;
+	  };
+  };
+};
+
+function getLargestNumberAmongMixedElements(arr) {
+  if (arr.length === 0) {
+      return 0;
+  } else {
+      let checkArr = [];
+      for (var i = 0; i < arr.length; i++) {
+          let currentElem = arr[i];
+          if (typeof currentElem === 'number') {
+              checkArr.push(currentElem);
+          };
+      };
+      if (checkArr.length === 0) {
+          return 0;
+      } else {
+          let max = Math.max(...checkArr);
+          return max;
+      };
+  };
+};
+
+
 
 function sumDigits(num) {
   let result = 0;
@@ -598,6 +725,24 @@ function sumDigits(num) {
 var output = sumDigits(-316);
 console.log(output);
 
+
+function getSumOfAllElementsAtProperty(obj, key) {
+  if (key in obj === false) {
+	  return 0;
+  } else {
+	  let prop = obj[key];
+	  if (Array.isArray(prop) === false) {
+		  return 0;
+	  } else {
+		  let result = 0;
+		  for (var i = 0; i < prop.length; i++) {
+			  result += prop[i];
+		  };
+	  return result;
+	  };
+  };
+};
+
 function getProductOfAllElementsAtProperty(obj, key) {
   for (var valueFromObj in obj) {
       let prop = obj[key];
@@ -621,6 +766,8 @@ var obj = {
 var output = getProductOfAllElementsAtProperty(obj, 'key');
 console.log(output);
 
+
+
 function getStringLength(string) {
   let counter = 0;
   while (string !== "") {
@@ -635,6 +782,19 @@ console.log(output);
 
 const str = 'Mozilla';
 console.log(str.substring(-1));
+
+
+
+function joinArrayOfArrays(arr) {
+  let outputArr = [];
+  for (var i = 0; i < arr.length; i++) {
+      let subArr = arr[i];
+      for (var j = 0; j < subArr.length; j++) {
+          outputArr.push(subArr[j]);
+      };
+  };
+  return outputArr;
+};
 
 function getLastElementOfProperty(obj, key) {
   for (var prop in obj) {
@@ -655,6 +815,7 @@ var obj = {
 var output = getLastElementOfProperty(obj, 'key');
 console.log(output);
 
+
 function getNthElementOfProperty(obj, key, n) {
   for (var prop in obj) {
       let key = obj[prop];
@@ -674,6 +835,7 @@ var obj = {
 var output = getNthElementOfProperty(obj, 'key', 3);
 console.log(output);
 
+
 function getFirstElementOfProperty(obj, key) {
   for (var prop in obj) {
       let key = obj[prop];
@@ -692,6 +854,62 @@ var obj = {
 };
 var output = getFirstElementOfProperty(obj, 'key');
 console.log(output);
+
+
+
+function convertScoreToGrade(score) {
+  if (score > 100 || score < 0) {
+      return 'INVALID SCORE';
+  } else {
+      if (score < 60) {
+          return 'F';
+      } else if (score < 70) {
+          return 'D';
+      } else if (score < 80) {
+          return 'C';
+      } else if (score < 90) {
+          return 'B';
+      } else {
+          return 'A';
+      };
+  };
+};
+
+function convertScoreToGradeWithPlusAndMinus(score) {
+  if (score > 100 || score < 0) {
+      return 'INVALID SCORE';
+  } else {
+      if (score <= 59) {
+          return 'F';
+      } else if (score <= 62) {
+          return 'D-';
+      } else if (score <= 67) {
+          return 'D';
+      } else if (score <= 69) {
+          return 'D+';
+      } else if (score <= 72) {
+          return 'C-';
+      } else if (score <= 77) {
+          return 'C';
+      } else if (score <= 79) {
+          return 'C+';
+      } else if (score <= 82) {
+          return 'B-';
+      } else if (score <= 87) {
+          return 'B';
+      } else if (score <= 89) {
+          return 'B+';
+      } else if (score <= 92) {
+          return 'A-';
+      } else if (score <= 97) {
+          return 'A';
+      } else {
+          return 'A+';
+      };
+  };
+};
+
+
 
 function countAllCharacters(str) {
   let emptyObj = {};
@@ -714,6 +932,8 @@ console.log(indexOfS);
 
 var output = countAllCharacters('giggity');
 console.log(output);
+
+
 
 function getElementsThatEqual10AtProperty(obj, key) {
   let emptyArr = [];
@@ -738,6 +958,8 @@ var obj = {
 var output = getElementsThatEqual10AtProperty(obj, 'key');
 console.log(output);
 
+
+
 function findShortestElement(arr) {
   let empty = '';
   if (arr.length === 0) {
@@ -759,6 +981,7 @@ function findShortestElement(arr) {
 
 var output = findShortestElement(['a', 'two', 'three']);
 console.log(output);
+
 
 function getLongestElement(arr) {
   let empty = '';
@@ -782,6 +1005,7 @@ function getLongestElement(arr) {
 var output = getLongestElement(['one', 'two', 'three']);
 console.log(output);
 
+
 function computeProductOfAllElements(arr) {
   if (arr.length === 0) {
       return 0;
@@ -796,6 +1020,7 @@ function computeProductOfAllElements(arr) {
 var output = computeProductOfAllElements([2, 5, 6]);
 console.log(output);
 
+
 function squareElements(arr) {
   for (var i = 0; i<arr.length; i++) {
       return arr[i]*arr[i];
@@ -805,6 +1030,7 @@ function squareElements(arr) {
 
 var output = squareElements([1, 2, 3]);
 console.log(output);
+
 
 function getLengthOfLongestElement(arr) {
     let check = [];
@@ -822,6 +1048,7 @@ function getLengthOfLongestElement(arr) {
 var output = getLengthOfLongestElement(['one', 'two', 'three']);
 console.log(output);
 
+
 function filterOddLengthWords(words) {
   let newArr = [];
   for (var i = 0; i<words.length; i++) {
@@ -834,6 +1061,42 @@ function filterOddLengthWords(words) {
 
 var output = filterOddLengthWords(['ther', 'it', 'is', 'no']);
 console.log(output);
+
+
+function getLargestElement(arr) {
+  let retVal = 0;
+  if (arr.length === 0) {
+      return retVal;
+  } else {
+      retVal = Math.max(...arr);
+  };
+  return retVal;
+};
+
+function computeSumOfAllElements(arr) {
+  let result = 0;
+  for (var i = 0; i < arr.length; i++) {
+      result += arr[i];
+  };
+  return result;
+};
+
+
+
+function calculateBillTotal(preTaxAndTipAmount) {
+  let salesTax = .095;
+  let tipAdj = 1.15;
+  return ((preTaxAndTipAmount * tipAdj) + (preTaxAndTipAmount * salesTax));
+};
+
+function computeCompoundInterest(principal, interestRate, compoundingFrequency, timeInYears) {
+  let adjustedRate = interestRate / compoundingFrequency;
+  let adjustedTime = compoundingFrequency * timeInYears;
+  let total =  principal * ((1 + adjustedRate) ** adjustedTime);
+  return total - principal;
+};
+
+
 
 function select(arr, obj) {
   let newObj = {};
@@ -857,6 +1120,7 @@ var obj = {
 var output = select(arr, obj);
 console.log(output);
 
+
 function findMinLengthOfThreeWords(word1, word2, word3) {
   let len1 = word1.length;
   let len2 = word2.length;
@@ -873,6 +1137,7 @@ function findMinLengthOfThreeWords(word1, word2, word3) {
 var output = findMinLengthOfThreeWords('a', 'bb', 'ccc');
 console.log(output); 
 
+
 function getIndexOf(char, str) {
 	let input = char.toString();
 	for (var i = 0; i<str.length; i++) {
@@ -886,6 +1151,7 @@ function getIndexOf(char, str) {
 var output = getIndexOf('a', 'I am a hacker');
 console.log(output);
 
+
 function getAllElementsButNth(array, n) {
 	let newArr = [];
 	for (i = 0; i<array.length; i++) {
@@ -898,6 +1164,7 @@ function getAllElementsButNth(array, n) {
 
 var output = getAllElementsButNth(['a', 'b', 'c'], 1);
 console.log(output);
+
 
 function addToFrontOfNew(arr, element) {
   let output = [];
@@ -913,6 +1180,7 @@ var output = addToFrontOfNew(input, 3);
 console.log(output);
 console.log(input);
 
+
 function convertDoubleSpaceToSingle(str) {
   let regex = /  /gi;
   let input = str.replace(regex, " ");
@@ -921,6 +1189,7 @@ function convertDoubleSpaceToSingle(str) {
 
 var output = convertDoubleSpaceToSingle("string  with  double  spaces");
 console.log(output);
+
 
 function countNumberOfKeys(obj) {
     let len = Object.keys(obj);
@@ -934,6 +1203,7 @@ var obj = {
 };
 var output = countNumberOfKeys(obj);
 console.log(output);
+
 
 function removeNumbersLargerThan(num, obj) {
   for (var valueInObj in obj) {
@@ -950,6 +1220,7 @@ var obj = {
 }
 removeNumbersLargerThan(5, obj);
 console.log(obj);
+
 
 function removeNumberValues(obj) {
   for (var valueInObj in obj) {
@@ -968,6 +1239,7 @@ var obj = {
 removeNumberValues(obj);
 console.log(obj);
 
+
 function removeArrayValues(obj) {
   for (var keyInObj in obj) {
       if (typeof obj[keyInObj] == 'object') {
@@ -983,6 +1255,7 @@ var obj = {
 }
 removeArrayValues(obj);
 console.log(obj);
+
 
 function countWords(str) {
   if (str === "") {
@@ -1003,6 +1276,7 @@ function countWords(str) {
 
 var output = countWords('ask a bunch get a bunch');
 console.log(output); // --> {ask: 1, a: 2, bunch: 2, get: 1}
+
 
 function getAllWords(str) {
     if (str === '') {
@@ -1205,6 +1479,28 @@ function repeatString(str, count) {
 
 console.log(repeatString('Hello', 3));
 
+
+function getLongestOfThreeWords(word1, word2, word3) {
+  let max = Math.max(word1.length, word2.length, word3.length);
+  if (word1.length === max) {
+      return word1;
+  } else if (word2.length === max) {
+      return word2;
+  } else if (word3.length === max) {
+      return word3;
+  };
+};
+
+function findShortestOfThreeWords(word1, word2, word3) {
+  let min = Math.min(word1.length, word2.length, word3.length);
+  if (word1.length === min) {
+      return word1;
+  } else if (word2.length === min) {
+      return word2;
+  } else if (word3.length === min) {
+      return word3;
+  };
+};
 
 
 // Part 2 - Arrays:
