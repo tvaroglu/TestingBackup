@@ -1,3 +1,335 @@
+// Skeleton
+function solution(arrayOfIntegers) {
+	//create output array
+	let outputArr = [];
+	//iterate over the integers array
+	for (let i = 0; i < arrayOfIntegers.length; i++) {
+		//create variable aliases
+		let currInt = arrayOfIntegers[i];
+		let nextInt = arrayOfIntegers[i+1];
+		let nextNextInt = arrayOfIntegers[i+2];
+		let prevInt = arrayOfIntegers[i-1];
+		let currDelta = nextInt - currInt;
+		let nextDelta = nextNextInt - nextInt;
+		let prevDelta = currInt - prevInt;
+		//if non-consecutive integers (more than 1 in between current and next, and not already within a streak)
+		if (currDelta !== 1 && prevDelta !== 1) {
+			outputArr.push(currInt.toString());
+		//if non-consecutive integers (1 in between current and next, but not within a streak)
+		} else if (currDelta === 1 && prevDelta !== 1 && nextDelta !== 1) {
+			outputArr.push(currInt.toString());
+		} else {
+			//we're on a streak
+			if (prevDelta !== 1 && currDelta === 1) {
+				//assign start of range
+				let rangeStart = currInt.toString();
+				outputArr.push(rangeStart + '-');
+			};
+			if (currDelta > 1 || nextInt === undefined) {
+				//assign end of range
+				let rangeEnd = currInt.toString();
+				outputArr.push(rangeEnd);
+			};
+		};
+	};
+	//clean output array to remove extra commas
+	let outputArrJoined = outputArr.join(',');
+	let outputStr = outputArrJoined[0].toString();
+	for (let j = 0; j < outputArrJoined.length; j++) {
+		let currentChar = outputArrJoined[j];
+		let nextChar = outputArrJoined[j+1];
+		if (currentChar === '-' && nextChar === ',') {
+			continue;
+		} else {
+			if (nextChar !== undefined) {
+				outputStr += nextChar;
+			};
+		};
+	};
+	return outputStr;
+};
+
+// TestSuite
+function assertEquals(actual, expected, testName) {
+	let success = `passed [${testName}] : expected \n "${expected}", and got \n "${actual}"`;
+	let failure = `failed [${testName}] : expected \n "${expected}", but got \n "${actual}"`;
+	if (actual === expected) {
+		console.log(success);
+	} else {
+		console.log(failure);
+	};
+};
+
+let testAll = 'It correctly returns a formatted integer string based on the provided integer input array';
+let actual1 = solution([-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20]);
+let expected1 = "-6,-3-1,3-5,7-11,14,15,17-20";
+let actual2 = solution([-4, -3, -2, -1, 2, 3, 5, 6, 12, 13, 14, 15, 17]);
+let expected2 = "-4--1,2,3,5,6,12-15,17";
+console.log(assertEquals(actual1, expected1, testAll));
+console.log(assertEquals(actual2, expected2, testAll));
+
+
+
+
+
+// Skeleton
+function generateSampleView (arrayOfUserObjects) {
+	//create output array
+	let outputArr = [];
+	//iterate through the user objects array
+	for (var j = 0; j < arrayOfUserObjects.length; j++) {
+		//create variable aliases for user object
+		let user = arrayOfUserObjects[j];
+		let userID = user['id'];
+		let userEmail = user['email'];
+		let userStreet = user['address']['street'];
+		let userSuite = user['address']['suite'];
+		let userCity = user['address']['city'];
+		let userZip = user['address']['zipcode'];
+		//check userID even vs odd
+		let check = Number.isInteger(userID / 2);
+		//if even:
+		if (check) {
+			//create empty string
+			let outputStr = ''
+			//add "street, suite, city, zip" to string and output array
+			outputStr += `${userStreet}, ${userSuite}, ${userCity}, ${userZip}`;
+			outputArr.push(outputStr);
+		//otherwise:
+		} else {
+			//add user email to output array
+			outputArr.push(userEmail);
+		};
+	};
+	//return output array
+	return outputArr;
+};
+
+var users = [
+  {
+    "id": 1,
+    "name": "Leanne Graham",
+    "username": "Bret",
+    "email": "Sincere@april.biz",
+    "address": {
+      "street": "Kulas Light",
+      "suite": "Apt. 556",
+      "city": "Gwenborough",
+      "zipcode": "92998-3874",
+      "geo": {
+        "lat": "-37.3159",
+        "lng": "81.1496"
+      }
+    },
+    "phone": "1-770-736-8031 x56442",
+    "website": "hildegard.org",
+    "company": {
+      "name": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Ervin Howell",
+    "username": "Antonette",
+    "email": "Shanna@melissa.tv",
+    "address": {
+      "street": "Victor Plains",
+      "suite": "Suite 879",
+      "city": "Wisokyburgh",
+      "zipcode": "90566-7771",
+      "geo": {
+        "lat": "-43.9509",
+        "lng": "-34.4618"
+      }
+    },
+    "phone": "010-692-6593 x09125",
+    "website": "anastasia.net",
+    "company": {
+      "name": "Deckow-Crist",
+      "catchPhrase": "Proactive didactic contingency",
+      "bs": "synergize scalable supply-chains"
+    }
+  }
+];
+
+// testSuite
+function assertArraysEqual (actual, expected, testName) {
+	let success = `passed [${testName}] : \n expected "${expected}", \n and got "${actual}"`;
+	let failure = `failed [${testName}] : \n expected "${expected}", \n but got "${actual}"`;
+	let hasSameLengths = true;
+	let hasSameValues = true;
+	if (actual.length !== expected.length || actual.length === undefined) {
+		hasSameLengths = false;
+	};
+	for (var i = 0; i < actual.length; i++) {
+		if (actual[i] !== expected[i]) {
+			hasSameValues = false;
+			break;
+		};
+	};
+	if (hasSameLengths && hasSameValues) {
+		console.log(success);
+	} else {
+		console.log(failure);
+	};
+};
+
+let actualOutput = generateSampleView(users);
+let expectedOutput = ["Sincere@april.biz", "Victor Plains, Suite 879, Wisokyburgh, 90566-7771"];
+console.log(assertArraysEqual(actualOutput, expectedOutput, 'It correctly renders the sample view based on the provided user data'));
+
+
+
+
+
+/*
+Write a function called 'checkWinner'. This function will take an array with a length of 7. Each element of the array will be either; 'red', 'black', or 0. We can assume that no violation of either of these is possible (i.e. input will always be of length 7, and elements will only be 'red', 'black', or 0).
+
+Your function should accept this array as its only parameter.
+
+If there are 4 'red' elements consecutively in a row, 'checkWinner' should return the string: 'Red Wins!'. Similarly, if there are 4 'black' elements consecutively in a row, 'checkWinner' should return the string: 'Black Wins!'. If neither of these is the case, 'checkWinner' should return 'Draw!'.
+
+Here are some examples of your code running, assuming you have successfully created the described function. Please be sure to name the function "checkWinner".
+*/
+
+//Skeleton
+function checkWinner(arrayOfGameValues) {
+	//create result variable
+	let gameResult = '';
+	//check length of arrayOfGameValues
+	//if !== 7, return error message
+	if (arrayOfGameValues.length !== 7) {
+		return 'Error, number of turns in game does not match based on the rules of the game, please check your input';
+	} else {	
+		//otherwise, iterate over arrayOfGameValues
+		//create variable aliases for red vs black counters
+		let blackCounter = 1;
+		let redCounter = 1;
+		for (var i = 0; i < arrayOfGameValues.length; i++) {
+			let currentTurn = arrayOfGameValues[i];
+			//sum consecutive color counters
+			if (currentTurn === 'black' && arrayOfGameValues[i+1] === 'black') {
+				//set winning color as return value based on counters
+				blackCounter += 1;
+			} else if (currentTurn === 'red' && arrayOfGameValues[i+1] === 'red') {
+				redCounter += 1;
+			};
+		};
+	//return result variable as applicable
+	if (blackCounter >= 4) {
+		return 'Black Wins!';
+	} else if (redCounter >= 4) {
+		return 'Red Wins!';
+	} else {
+		return 'Draw!';
+	};
+	};
+};
+
+
+//TestSuite
+function assertEqual(actual, expected, testName) {
+	let success = `passed [${testName}] : expected "${expected}", and got "${actual}"`;
+	let failure = `FAILED [${testName}] : expected "${expected}", but got "${actual}"`;
+	if (actual === expected) {
+		return success;
+	} else {
+		return failure;
+	};
+};
+
+function testAll(testArray, expectedValuesArray, testCase) {
+	for (var j = 0; j < testArray.length; j++) {
+		let currentTest = testArray[j];
+		console.log(assertEqual(currentTest, expectedValuesArray[j], testCase));
+	};
+};
+
+
+let testNameAll = 'It correctly calculates the winner of the provided Connect4 game values based on the provided input array';
+
+let actualOutputs = [
+	//blackWinner
+	checkWinner(['black', 'red', 'black', 'black', 'black', 'black', 'red']),
+	//redWinner
+	checkWinner([0,0,0, 'red', 'red', 'red', 'red']),
+	//draw
+	checkWinner(['red', 'red', 'red', 'black', 'red', 'black', 0])
+];
+
+let expectedValues = [
+	'Black Wins!',
+	'Red Wins!',
+	'Draw!'
+];
+
+console.log(testAll(actualOutputs, expectedValues, testNameAll));
+
+
+
+
+/*
+Please write a function that takes an array of integer altitudes along a hiking trail, as well as two indexes into that array. The two indexes represent the start and end of a segment in the array. We can assume that the array will only contain integers, and that the two indexes will be valid (i.e. they will exist in the input array, and will make sense compared to each other - start is before end).
+
+Your function should return the "sum of the changes for a walk within that segment" (i.e., beginning at the start index and ending at the end index). Each integer in the array represents another height on the trail, so "walking" will mean accumulating each change in height into a "sum of the changes".
+
+Note that increases in height count double.
+
+Here are some examples of your code running, assuming you have successfully created the described function. Please be sure to name the function "sumAltitudeDeltas".
+*/
+
+//Skeleton
+function sumAltitudeDeltas(arrayOfIntegers, startIndex, endIndex) {
+	//slice inputArray based on start and end indexes
+	let slicedArr = arrayOfIntegers.slice(startIndex, endIndex + 1);
+	//create variable aliases for return value
+	let netAltitudeChange = 0;
+	//iterate through sliced array
+	for (var i = 0; i < slicedArr.length - 1; i++) {
+		let currentHeight = slicedArr[i];
+		//sum net height changes into output value
+		let rawHeightDelta = slicedArr[i+1] - currentHeight;
+		if (rawHeightDelta === NaN || rawHeightDelta === 0) {
+			netHeightDelta = 0;
+		} else if (rawHeightDelta > 0) {
+			netHeightDelta = rawHeightDelta * 2;
+		} else if (rawHeightDelta < 0) {
+			netHeightDelta = rawHeightDelta * -1;
+		};
+		netAltitudeChange += netHeightDelta;
+	};
+	//return output value
+	return netAltitudeChange;
+};
+
+
+//TestSuite
+let testNameAll = 'It correctly calculates the sum of altitude changes along the integer array of hiking altitude values';
+
+let actualOutputs = [
+	sumAltitudeDeltas([1, 2, 3, 1], 0, 3),
+	sumAltitudeDeltas([5, 3, 6, 7, 2], 2, 4),
+	sumAltitudeDeltas([5, 3, 6, 7, 2], 0, 1),
+	sumAltitudeDeltas([5, 3, 6, 7, 2], 0, 4),
+	sumAltitudeDeltas([4, 1, 4, 0, 20, 13], 1, 4)
+];
+
+let expectedValues = [
+	6,
+	7,
+	2,
+	15,
+	50
+];
+
+console.log(testAll(actualOutputs, expectedValues, testNameAll));
+
+
+
+
+
 /*
 Binary search is a technique for very rapidly searching a sorted collection by cutting the search space in half at every pass.
 
