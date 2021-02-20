@@ -1,4 +1,212 @@
 // Skeleton
+function getDomain(url) {
+	//create variable aliases
+	let outputStr = '';
+	let inputStr = url.toString();
+	let urlSplitLeft;
+	let urlSplitRight;
+	//split url left on "http://" or "www." as applicable
+	if (inputStr.indexOf('://www.') !== -1) {
+		urlSplitLeft = inputStr.split('://www.');
+	} else if (inputStr.indexOf('://') !== -1) {
+		urlSplitLeft = inputStr.split('://');
+	} else if (inputStr.indexOf('www.') !== -1) {
+		urlSplitLeft = inputStr.split('www.');
+	};
+	urlSplitRight = urlSplitLeft[1].split('.');
+	outputStr = urlSplitRight[0];
+	//return output string
+	return outputStr;
+  };
+  
+  
+  // TestSuite
+  function assertEqual(actual, expected, testName) {
+	  let success = `passed [${testName}]: expected \n "${expected}", and got \n "${actual}"`;
+	  let failure = `failed [${testName}]: expected \n "${expected}", but got \n "${actual}"`;
+	  if (actual === expected) {
+		  console.log(success);
+	  } else {
+		  console.log(failure);
+	  };
+  };
+  
+  let testAll = 'It correctly extracts the domain name from the input url';
+  
+  let actual1 = getDomain('http://github.com/carbonfive/raygun');
+  let expected1 = 'github';
+  console.log(assertEqual(actual1, expected1, testAll));
+  
+  let actual2 = getDomain('http://www.zombie-bites.com');
+  let expected2 = 'zombie-bites';
+  console.log(assertEqual(actual2, expected2, testAll));
+  
+  let actual3 = getDomain('https://www.facebook.com');
+  let expected3 = 'facebook';
+  console.log(assertEqual(actual3, expected3, testAll));
+  
+  let actual4 = getDomain('https://cnet.com');
+  let expected4 = 'cnet';
+  console.log(assertEqual(actual4, expected4, testAll));
+  
+  let actual5 = getDomain('www.google.co');
+  let expected5 = 'google';
+  console.log(assertEqual(actual5, expected5, testAll));
+  
+  
+  
+  
+  
+  // Skeleton
+  function highestScoringWord(string) {
+  	//create variable aliases
+  	let outputStr = '';
+  	let shellObj = {};
+  	let scoreArr = [];
+  	let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  	//split input string on space
+  	let cleanInput = string.toString();
+  	let stringSplit = cleanInput.split(' ');
+  	//iterate through split input string array
+  	for (let i = 0; i < stringSplit.length; i++) {
+  		//iterate through each word to assign score
+  		let currentWord = stringSplit[i];
+  		let wordScore = 0;
+  		for (let j = 0; j < currentWord.length; j++) {
+  			let currentLetter = currentWord[j].toLowerCase();
+  			let letterScore = alphabet.indexOf(currentLetter) + 1;
+  			wordScore += letterScore;
+  			//add word and score to placeholder object
+  			shellObj[currentWord] = {
+  				'word': currentWord,
+  				'score': wordScore
+  				};
+  		};
+  	scoreArr.push(wordScore);
+  	};
+  	let max = Math.max(...scoreArr);
+  	//iterate through placeholder object for final scoring
+  	for (let key in shellObj) {
+  		if (shellObj[key].score === max && max !== 0) {
+  			//assign highest scoring (or first if tie) to output string
+  			outputStr = shellObj[key].word.toLowerCase();
+  			break;
+  		};
+  	};
+  	//return output string
+  	return outputStr;
+  };
+  
+  // TestSuite
+  function assertEqual(actual, expected, testName) {
+  	let success = `passed [${testName}]: expected \n "${expected}", and got \n "${actual}"`;
+  	let failure = `failed [${testName}]: expected \n "${expected}", but got \n "${actual}"`;
+  	if (actual === expected) {
+  		console.log(success);
+  	} else {
+  		console.log(failure);
+  	};
+  };
+  
+  let actualSingleHighScore = highestScoringWord('Hello World');
+  let expectedSingleHighScore = 'world';
+  let testNameSingleHighScore = 'it correctly returns the highest scoring word when no ties for high score';
+  console.log(assertEqual(actualSingleHighScore, expectedSingleHighScore, testNameSingleHighScore));
+  
+  let actualTiedHighScore = highestScoringWord('Hello ohell');
+  let expectedTiedHighScore = 'hello';
+  let testNameTiedHighScore = 'it correctly returns the first highest scoring word when there are ties for high score';
+  console.log(assertEqual(actualTiedHighScore, expectedTiedHighScore, testNameTiedHighScore));
+  
+  let actualNoHighScore = highestScoringWord(' ');
+  let expectedNoHighScore = '';
+  let testNameNoHighScore = 'it correctly returns an empty string when there are no words to score';
+  console.log(assertEqual(actualNoHighScore, expectedNoHighScore, testNameNoHighScore));
+  
+  let actualNotStringScore = highestScoringWord(123);
+  let expectedNotStringScore = '';
+  let testNameNotStringScore = 'it correctly returns an empty string when a non-string is passed as input';
+  console.log(assertEqual(actualNotStringScore, expectedNotStringScore, testNameNotStringScore));
+  
+  
+  
+  
+  
+  // Skeleton
+  function splitPairs(input) {
+    //create output array
+    let outputArr = [];
+    //if empty string
+    if (input.length === 0 || input === undefined || input === '') {
+  	//return output array
+  	return outputArr;
+    };
+    //check even vs odd length string
+    let strLen = '';
+    let check = Number.isInteger(input.length / 2);
+    if (check) {
+  	  strLen = 'even';
+    } else {
+  	  strLen = 'odd';
+    };
+    //iterate over input string, step two
+    for (let j = 0; j < input.length; j+=2) {
+  	  //create variable aliases
+  	  let currentChar = input[j];
+  	  let nextChar = input[j+1];
+  	  if (nextChar === undefined) {
+  		  nextChar = '_';
+  	  };
+  	  //push applicable character pairs to output array
+  	  let charPair = currentChar + nextChar;
+  	  outputArr.push(charPair);
+    };
+    //return output array
+    return outputArr;
+  }
+  
+  // TestSuite
+  function assertArraysEqual(actual, expected, testName) {
+  	let success = `passed [${testName}]: expected \n "${expected}", and got \n "${actual}"`;
+  	let failure = `failed [${testName}]: expected \n "${expected}", but got \n "${actual}"`;
+  	let hasSameLengths = true;
+  	let hasSameValues = true;
+  	if (actual.length !== expected.length) {
+  		hasSameLengths = false;
+  	};
+  	for (let i = 0; i < actual.length; i++) {
+  		if (actual[i] !== expected[i]) {
+  			hasSameValues = false;
+  			break;
+  		};
+  	};
+  	if (hasSameLengths && hasSameValues) {
+  		console.log(success);
+  	} else {
+  		console.log(failure);
+  	};
+  };
+  
+  let actualEvenLenStr = splitPairs('HelloWorld');
+  let expectedEvenLenStr = ['He', 'll', 'oW', 'or', 'ld'];
+  let testNameEvenLenStr = 'it correctly splits an even length string into character pairs';
+  console.log(assertArraysEqual(actualEvenLenStr, expectedEvenLenStr, testNameEvenLenStr));
+  
+  let actualOddLenStr = splitPairs('Hello World');
+  let expectedOddLenStr = ['He', 'll', 'o ', 'Wo', 'rl', 'd_'];
+  let testNameOddLenStr = 'it correctly splits an odd length string into character pairs';
+  console.log(assertArraysEqual(actualOddLenStr, expectedOddLenStr, testNameOddLenStr));
+  
+  let actualEmptyStr = splitPairs('');
+  let expectedEmptyStr = [];
+  let testNameEmptyStr = 'it correctly returns an empty array for an empty string';
+  console.log(assertArraysEqual(actualEmptyStr, expectedEmptyStr, testNameEmptyStr));
+
+
+
+
+
+// Skeleton
 function solution(arrayOfIntegers) {
 	//create output array
 	let outputArr = [];
