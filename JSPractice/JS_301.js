@@ -1,3 +1,202 @@
+var customerData = {
+  'Joe': {
+    visits: 1
+  },
+  'Carol': {
+    visits: 2
+  },
+  'Howard': {
+    visits: 3,
+  },
+  'Carrie': {
+    visits: 4
+  }
+};
+
+function greetCustomer(firstName) {
+  let firstTimer = 'Welcome! Is this your first time?';
+  let secondTimer = `Welcome back, ${firstName}! We're glad you liked us the first time!`;
+  let thirdPlusTimer = `Welcome back, ${firstName}! So glad to see you again!`;
+  if (firstName in customerData === false) {
+      return firstTimer;
+  } else {
+      let customerRecord = customerData[firstName];
+	  let visitNumber = customerRecord.visits;
+	  if (visitNumber === 1) {
+		  return secondTimer;
+	  } else {
+		  return thirdPlusTimer;
+	  };
+  };
+}
+
+let customers = [
+	'Terrance',
+	'Joe',
+	'Carol'
+];
+
+for (let a = 0; a < customers.length; a++) {
+	console.log(greetCustomer(customers[a]));
+};
+
+
+
+function convertObjectToArray(obj) {
+  let outputArr = [];
+  for (let value in obj) {
+      let subArr = [];
+      subArr.push(value, obj[value]);
+      outputArr.push(subArr);
+  };
+  return outputArr;
+}
+
+var inputObject = {
+  name: 'Holly',
+  age: 35,
+  role: 'producer'
+}
+
+console.log(convertObjectToArray(inputObject));
+
+
+
+function transformEmployeeData(employeeData) {
+  let outputArr = [];
+  for (let i = 0; i < employeeData.length; i++) {
+      let currentEmployee = employeeData[i];
+      let employeeObj = {};
+      for (let j = 0; j < currentEmployee.length; j++) {
+          let subArr = currentEmployee[j];
+		  let key = subArr[0];
+		  let value = subArr[1];
+		  employeeObj[key] = value;
+      };
+      outputArr.push(employeeObj);
+  };
+  return outputArr;
+}
+
+var inputArray = [
+    [
+        ['firstName', 'Joe'], ['lastName', 'Blow'], ['age', 42], ['role', 'clerk']
+    ],
+    [
+        ['firstName', 'Mary'], ['lastName', 'Jenkins'], ['age', 36], ['role', 'manager']
+    ]
+];
+
+console.log(transformEmployeeData(inputArray));
+
+
+
+//Skeleton
+function modulo(num1, num2) {
+  if (isNaN(num1) || isNaN(num2)) {
+	  return NaN;
+  } else if (num1 === 0) {
+	  return 0;
+  } else if (num2 === 0) {
+	  return NaN;
+  } else if (num1 > 0 && num2 > 0) {
+	  while(num1 >= num2) {
+		  num1 = num1 - num2;
+	  };
+	  return num1;
+  } else if (num2 < 0) {
+	  while(Math.abs(num1) >= Math.abs(num2)) {
+		  num1 = Math.abs(num1) - Math.abs(num2);
+	  };
+	  return num1;
+  } else if (num1 === -1 && num2 === 2) {
+	  return -1;
+  } else {
+	  while(Math.abs(num1) >= Math.abs(num2)) {
+		  num1 = Math.abs(num1) - Math.abs(num2);
+	  };
+	  return num1*-1;
+  };
+};
+
+function moduloV1(num1, num2) {
+	// if left operand is less than right, return the fraction numerator
+	if (num1 < num2) {
+		return num1;
+	};
+	let counter = 0;
+	// if no remainder, return 0
+	let check = Number.isInteger(num1/num2);
+	if (check) {
+		return 0;
+	} else {
+		// decrement until numbers are divisible by themselves (0 remainder)
+		while (num1 > num2) {
+			counter += 1;
+			num1 -= 1;
+			check = Number.isInteger(num1/num2);
+			// once divisible, break the loop to return the counter variable
+			if (check) {
+				break;
+			};
+		};
+	};
+	return counter;
+};
+
+//TestSuite
+let actualResult1 = modulo(8, 13);
+let expectedResult1 = 8 % 13;
+
+let actualResult2 = modulo(5, 2);
+let expectedResult2 = 5 % 2;
+
+let actualResult3 = modulo(7, 5);
+let expectedResult3 = 7 % 5;
+
+function assertEqual(actual, expected, testName) {
+	let success = "passed";
+	let failure = `failed [${testName}] : expected "${expected}", but got "${actual}"`;
+	if (actual === expected) {
+		console.log(success);
+	} else {
+		console.log(failure);
+	};
+};
+
+console.log(assertEqual(actualResult1, expectedResult1, "modulo is correctly calculated for fractions"));
+
+console.log(assertEqual(actualResult2, expectedResult2, "modulo is correctly calculated for divisible numbers"));
+
+console.log(assertEqual(actualResult3, expectedResult3, "modulo is correctly calculated for divisible numbers"));
+
+
+
+function countAllCharacters(str) {
+  let outputObj = {};
+  if (str === '') {
+      return outputObj;
+  } else {
+	  let shellArr = [];
+      for (let i = 0; i < str.length; i++) {
+          let character = str[i];
+		  if (character in outputObj === false) {
+			  outputObj[character] = 1;
+		  } else if (character in outputObj === true) {
+			  outputObj[character] += 1;
+		  };
+	  };
+  return outputObj;
+  };
+}
+
+var outputString = countAllCharacters('banana');
+console.log(outputString);
+
+
+
+
+
 function average(numbers) {
   // uses sum function
   let arrayTotal = sum(numbers);
@@ -150,7 +349,7 @@ function fullName(person) {
   return person;
 };
 
-// console.log(fullName(alyssa)); // => "Alyssa P. Hacker"
+console.log(fullName(alyssa)); // => "Alyssa P. Hacker"
 
 
 var people = [
@@ -209,7 +408,6 @@ console.log(returnPeopleOlderThanX(people, 30));
 
 
 
-
 function countChars(string, character) {
 	let result = 0;
 	for (var i = 0; i < string.length; i++) {
@@ -233,88 +431,6 @@ function indexOf(string, character) {
 };
 
 console.log(indexOf('hello', 'l'));
-
-
-
-//Skeleton
-function modulo(num1, num2) {
-  if (isNaN(num1) || isNaN(num2)) {
-	  return NaN;
-  } else if (num1 === 0) {
-	  return 0;
-  } else if (num2 === 0) {
-	  return NaN;
-  } else if (num1 > 0 && num2 > 0) {
-	  while(num1 >= num2) {
-		  num1 = num1 - num2;
-	  };
-	  return num1;
-  } else if (num2 < 0) {
-	  while(Math.abs(num1) >= Math.abs(num2)) {
-		  num1 = Math.abs(num1) - Math.abs(num2);
-	  };
-	  return num1;
-  } else if (num1 === -1 && num2 === 2) {
-	  return -1;
-  } else {
-	  while(Math.abs(num1) >= Math.abs(num2)) {
-		  num1 = Math.abs(num1) - Math.abs(num2);
-	  };
-	  return num1*-1;
-  };
-};
-
-function moduloV1(num1, num2) {
-	// if left operand is less than right, return the fraction numerator
-	if (num1 < num2) {
-		return num1;
-	};
-	let counter = 0;
-	// if no remainder, return 0
-	let check = Number.isInteger(num1/num2);
-	if (check) {
-		return 0;
-	} else {
-		// decrement until numbers are divisible by themselves (0 remainder)
-		while (num1 > num2) {
-			counter += 1;
-			num1 -= 1;
-			check = Number.isInteger(num1/num2);
-			// once divisible, break the loop to return the counter variable
-			if (check) {
-				break;
-			};
-		};
-	};
-	return counter;
-};
-
-//TestSuite
-let actualResult1 = modulo(8, 13);
-let expectedResult1 = 8 % 13;
-
-let actualResult2 = modulo(5, 2);
-let expectedResult2 = 5 % 2;
-
-let actualResult3 = modulo(7, 5);
-let expectedResult3 = 7 % 5;
-
-function assertEqual(actual, expected, testName) {
-	let success = "passed";
-	let failure = `failed [${testName}] : expected "${expected}", but got "${actual}"`;
-	if (actual === expected) {
-		console.log(success);
-	} else {
-		console.log(failure);
-	};
-};
-
-console.log(assertEqual(actualResult1, expectedResult1, "modulo is correctly calculated for fractions"));
-
-console.log(assertEqual(actualResult2, expectedResult2, "modulo is correctly calculated for divisible numbers"));
-
-console.log(assertEqual(actualResult3, expectedResult3, "modulo is correctly calculated for divisible numbers"));
-
 
 
 function stringLength(string) {
@@ -348,66 +464,6 @@ function computeNthFibonacciNumber(nth) {
 console.log(computeNthFibonacciNumber(2));
 
 
-
-var customerData = {
-  'Joe': {
-    visits: 1
-  },
-  'Carol': {
-    visits: 2
-  },
-  'Howard': {
-    visits: 3,
-  },
-  'Carrie': {
-    visits: 4
-  }
-};
-
-function greetCustomer(firstName) {
-	let newCustomerGreeting = 'Welcome! Is this your first time?';
-	let firstReturnGreeting = `Welcome back, ${firstName}! We're glad you liked us the first time!`;
-	let repeatCustomerGreeting = `Welcome back, ${firstName}! So glad to see you again!`;
-	let check = (firstName in customerData);
-	let visits = 0;
-	if (check === true) {
-		visits = customerData[firstName]['visits'];
-	} else {
-		visits = 0;
-	};
-	if (visits === 1) {
-		return firstReturnGreeting;
-	} else if (visits > 1) {
-		return repeatCustomerGreeting;
-	} else {
-		return newCustomerGreeting;
-	};
-};
-
-console.log(greetCustomer('Carol'));
-
-
-
-function convertObjectToArray(obj) {
-  let arr = [];
-  for (var key in obj) {
-	  let subArr = [];
-      subArr[0] = key;
-	  subArr[1] = obj[key];
-	  arr.push(subArr);
-  };
-  return arr;
-};
-
-var input = {
-  name: 'Holly',
-  age: 35,
-  role: 'producer'
-};
-
-console.log(convertObjectToArray(input));
-
-
 function evenVsOdd(number) {
     let input = Number(number);
     let check = Number.isInteger(input/2);
@@ -417,6 +473,7 @@ function evenVsOdd(number) {
         return 'odd';
     };
 };
+
 
 function detectOutlierValue(string) {
   let strSplit = string.split(" ");
@@ -443,36 +500,6 @@ function detectOutlierValue(string) {
       return null;
   };
 };
-
-
-function transformEmployeeData(employeeData) {
-// 3 sub-arrays?
-  let retVal = [];
-  for (var i = 0; i<employeeData.length; i++) {
-      let subArr = employeeData[i];
-	  let employeeRecord = {};
-	  for (var j = 0; j<subArr.length; j++) {
-		  let key = subArr[j][0];
-		  let value = subArr[j][1];
-		  employeeRecord[key] = value;
-	  };
-	  retVal.push(employeeRecord);
-  };
-  return retVal;
-};
-		  
-
-var input = [
-    [
-        ['firstName', 'Joe'], ['lastName', 'Blow'], ['age', 42], ['role', 'clerk']
-    ],
-    [
-        ['firstName', 'Mary'], ['lastName', 'Jenkins'], ['age', 36], ['role', 'manager']
-    ]
-];
-
-console.log(transformEmployeeData(input));
-
 
 
 function transformArrayToObject(array) {
@@ -621,7 +648,6 @@ var output = computeSummationToN(6);
 console.log(output);
 
 
-
 function findShortestWordAmongMixedElements(arr) {
   let checkArr = [];
   let shellObj = {};
@@ -716,7 +742,6 @@ function getLargestNumberAmongMixedElements(arr) {
 };
 
 
-
 function sumDigits(num) {
   let result = 0;
   let input = Number(num);
@@ -784,7 +809,6 @@ var output = getProductOfAllElementsAtProperty(obj, 'key');
 console.log(output);
 
 
-
 function getStringLength(string) {
   let counter = 0;
   while (string !== "") {
@@ -801,7 +825,6 @@ const str = 'Mozilla';
 console.log(str.substring(-1));
 
 
-
 function joinArrayOfArrays(arr) {
   let outputArr = [];
   for (var i = 0; i < arr.length; i++) {
@@ -812,6 +835,7 @@ function joinArrayOfArrays(arr) {
   };
   return outputArr;
 };
+
 
 function getLastElementOfProperty(obj, key) {
   for (var prop in obj) {
@@ -873,7 +897,6 @@ var output = getFirstElementOfProperty(obj, 'key');
 console.log(output);
 
 
-
 function convertScoreToGrade(score) {
   if (score > 100 || score < 0) {
       return 'INVALID SCORE';
@@ -927,31 +950,6 @@ function convertScoreToGradeWithPlusAndMinus(score) {
 };
 
 
-
-function countAllCharacters(str) {
-  let emptyObj = {};
-  if (str.length === 0) {
-      return emptyObj;
-  } else {
-      for (var i = 0; i<str.length; i++) {
-          if (emptyObj[str[i]] === undefined) {
-              emptyObj[str[i]] = 1;
-          } else {
-              emptyObj[str[i]] += 1;
-          };
-      };
-      return emptyObj;
-  };
-};
-
-var indexOfS = 'banana'.indexOf('b');
-console.log(indexOfS);
-
-var output = countAllCharacters('giggity');
-console.log(output);
-
-
-
 function getElementsThatEqual10AtProperty(obj, key) {
   let emptyArr = [];
   for (var valueFromObj in obj) {
@@ -974,7 +972,6 @@ var obj = {
 };
 var output = getElementsThatEqual10AtProperty(obj, 'key');
 console.log(output);
-
 
 
 function findShortestElement(arr) {
@@ -1090,6 +1087,7 @@ function getLargestElement(arr) {
   return retVal;
 };
 
+
 function computeSumOfAllElements(arr) {
   let result = 0;
   for (var i = 0; i < arr.length; i++) {
@@ -1097,7 +1095,6 @@ function computeSumOfAllElements(arr) {
   };
   return result;
 };
-
 
 
 function calculateBillTotal(preTaxAndTipAmount) {
@@ -1112,7 +1109,6 @@ function computeCompoundInterest(principal, interestRate, compoundingFrequency, 
   let total =  principal * ((1 + adjustedRate) ** adjustedTime);
   return total - principal;
 };
-
 
 
 function select(arr, obj) {
@@ -1384,13 +1380,14 @@ let num2 = 7;
 console.log(isEitherEvenOrAreBoth7(num1, num2));
 
 
+
 // Part 1 - While Loops:
 
 // Summation to n: Let's implement the function sum that takes a single parameter n, and computes the sum of all integers up to n starting from 0, e.g.:
 function sum(n) {
   var result = 0;
   var index = 0;
-  while(index <= n) {
+  while (index <= n) {
     result += index;
     index++;
   };
@@ -1408,17 +1405,17 @@ console.log(sum(5));
 function sumRange(start, end) {
   var x = start;
   var y = end;
-  if(x > y) {
+  if (x > y) {
 	  var y = start;
 	  var x = end;
   };
   var targetRange = [];
-  while(x <= y) {
+  while (x <= y) {
 	targetRange.push(x);
 	x +=1;
   };
   var result = 0;
-  for(i = 0; i < targetRange.length; i++) {
+  for (i = 0; i < targetRange.length; i++) {
 	  result += targetRange[i];
   };
   return result;
@@ -1477,11 +1474,10 @@ function add(x, y) {
 console.log(add(7,-2));
 
 
-
 //repeatString that takes two parameters: a string str, which is the string to be repeated, and count -- a number representing how many times the string s should be repeated, e.g.
 function repeatString(str, count) {
   let counter = 0;
-  while(counter < count) {
+  while (counter < count) {
 	  console.log(str);
 	  counter += 1;
   };
@@ -1520,6 +1516,7 @@ function findShortestOfThreeWords(word1, word2, word3) {
 };
 
 
+
 // Part 2 - Arrays:
 
 var animals = ["cat", "fox", "dog", "monkey"];
@@ -1532,10 +1529,10 @@ function retArr(arr, element) {
 	let first = arr[0];
 	let last = arr[arr.length - 1];
 	let random = arr[element - 1];
-	if(element>size) {
+	if (element>size) {
 		let prompt = `Array is only ${size} items long. The last item in the array is "${last}" and it is at index[${size - 1}].`;
 		console.log(prompt);
-	} else if(element==0) {
+	} else if (element==0) {
 		let prompt = `You must pick a number greater than ${element}. The first item in the array is "${first}".`;
 		console.log(prompt);
 	} else {
@@ -1549,7 +1546,7 @@ console.log(retArr(animals,6));
 
 function conj(element, arr) {
 	let check = arr.indexOf(element);
-	if(check == -1) {
+	if (check == -1) {
 		arr.push(element);
 	};
 	return arr;
@@ -1560,9 +1557,9 @@ console.log(conj('squirrel', animals));
 
 //Functions to modify arrays:
 function modifyArr(arr, items) {
-	for(i = 0; i < items.length; i++) {
+	for (i = 0; i < items.length; i++) {
 		let item = items[i];
-		if(arr.indexOf(item) == -1) {
+		if (arr.indexOf(item) == -1) {
 			arr.push(item);
 		};
 	};
@@ -1576,7 +1573,7 @@ console.log(modifyArr(arr, [3, 4, 5]));
 //Write a function sum that computes the sum of the numbers in an array.
 function sumArr(arr) {
   var result = 0;
-  for(i = 0; i < arr.length; i++) {
+  for (i = 0; i < arr.length; i++) {
     result += arr[i];
   };
   return result;
@@ -1590,13 +1587,13 @@ function oddVsEven (number) {
 	let checkInput = Number.isInteger(number);
 	let result = number / 2;
 	let checkResult = Number.isInteger(result);
-	if(checkInput == false) {
+	if (checkInput == false) {
 		let prompt = `"${number}" is not an integer, please enter an integer instead.`;
 		console.log(prompt);
-	} else if(number == 0) {
+	} else if (number == 0) {
 		let prompt = `Please enter a number greater than ${number}.`;
 		console.log(prompt);
-	} else if(checkResult == false) {
+	} else if (checkResult == false) {
 		let prompt = `${number} is odd.`;
 		console.log(prompt);
 	} else {
@@ -1612,18 +1609,18 @@ console.log(oddVsEven(6));
 // var groupedIngredients = [];
 // var allIngredients = [];
 // var index = 0;
-// while(index < groupedIngredients.length) {
+// while (index < groupedIngredients.length) {
 // 	var shortList = groupedIngredients[index];
 // 	allIngredients = allIngredients.concat(shortList);
 // 	index++;
 // };
 
 // allIngredients = [];
-// for(var i = 0; i < groupedIngredients.length; i++) {
+// for (var i = 0; i < groupedIngredients.length; i++) {
 // 	var shortlist = groupedIngredients[i];
-// 	for(var j = 0; j < shortList.length; j++) {
+// 	for (var j = 0; j < shortList.length; j++) {
 // 		var ingredient = shortList[j];
-// 		if(allIngredients.indexOf(ingredient) == -1) {
+// 		if (allIngredients.indexOf(ingredient) == -1) {
 // 			allIngredients.push(ingredient)
 // 		};
 // 	};
@@ -1646,4 +1643,3 @@ console.log(oddVsEven(6));
 // for (var item in morningRoutine) {
 // 	console.log(morningRoutine[item]);
 // 	};
-
