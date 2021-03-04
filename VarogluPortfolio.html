@@ -7,6 +7,7 @@
 
 <title>Varoglu Portfolio</title>
 
+
 <style>
 
 body {
@@ -62,14 +63,6 @@ h1#header {
   list-style-type: none;
 }
 
-#ul02 {
-  font-family: verdana;
-  font-size: 100%;
-  margin: 5px;
-  color: rgb(105, 0, 0);
-  list-style-type: square;
-}
-
 
 #ulNAVBAR {
   list-style-type: none;
@@ -100,20 +93,6 @@ h1#header {
   width: 150px;
 }
 
-a.standard:link, a.standard:visited {
-  color: yellow;
-  background-color: transparent;
-  text-decoration: underline;
-  cursor: pointer;
-}  
-
-a.standard:hover, a.standard:active {
-  color: white;
-  background-color: transparent;
-  text-decoration: underline;
-  cursor: pointer;
-}  
-
 a.NAVBAR:link, a.NAVBAR:visited {
   background-color: none;
   color: white;
@@ -140,6 +119,21 @@ a.NAVBAR:hover, a.NAVBAR:active {
 }
 
 
+a.standard:link, a.standard:visited {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+  cursor: pointer;
+}  
+
+a.standard:hover, a.standard:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
+  cursor: pointer;
+}  
+
+
 #button01 {
   color: blue;
   font-family: verdana;
@@ -153,11 +147,49 @@ a.NAVBAR:hover, a.NAVBAR:active {
 }
 
 
+.repo {
+  background-color:transparent;
+  color: rgb(255, 255, 255);
+  border-radius: 20px;
+  border: 2px solid black;
+  padding: 10px;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 250px;
+  height: auto;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  float: none;
+}
+
+.repo:hover {
+  background-color: rgba(0, 225, 255, 0.5);
+  border-radius: 20px; 
+}
+
+.modules {
+  overflow: hidden;
+  width: 420px;
+  height: auto;
+  padding: 10px;
+  border: 1px solid red;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 0px;
+  background-color: rgba(0, 204, 255, 0.55);
+  border-radius: 20px;
+  float: none;
+  display: block;
+}
+
 .accordion {
   background-color:transparent;
   color: rgb(255, 255, 255);
   border-radius: 20px;
-  border: 1px solid black;
+  border: 2px solid black;
   cursor: pointer;
   padding: 10px;
   margin-left: 5px;
@@ -179,22 +211,24 @@ a.NAVBAR:hover, a.NAVBAR:active {
 
 .panel {
   overflow: hidden;
-  width: 420px;
+  width: 100%;
   height: auto;
-  padding: 20px;
-  border: 1px solid red;
+  padding-bottom: 0px;
+  border: 0px;
   margin-top: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   margin-left: 0px;
-  margin-right: 0px;
-  background-color: rgba(0, 204, 255, 0.55);
-  border-radius: 20px;
+  margin-right: 5px;
+  background-color: transparent;
+  border-radius: 10px;
   float: none;
-  display: block;
+  display: none;
 }
+
 
 </style>
 </head>
+
 
 <body>
 
@@ -209,61 +243,69 @@ a.NAVBAR:hover, a.NAVBAR:active {
 </ul>
 
 <script>
-    function displayContactInfo() {
-        alert("Taylor Varoglu\nmail to: Taylor.Varoglu@colorado.edu\n719-337-3975");
-    }
+  function displayContactInfo() {
+      alert("Taylor Varoglu\nmail to: Taylor.Varoglu@colorado.edu\n719-337-3975");
+  };
 </script>
+
+
+
+<button class="repo"><a class ="standard" href="https://github.com/tvaroglu/SFDCTools" target="_blank"><em>SFDC &amp; Internal Tools (Python)</em></a></button>
+
+  <div class="modules">
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1024px-Python-logo-notext.svg.png"
+    alt="Python Logo" id="python" style="float:left;margin-right:5px;height:65px;border:0px;padding-right:5px;border-radius:5px;"></img>
+
+    <ul id="ul01">
+      <li><a class="standard" href="https://github.com/tvaroglu/SFDCTools/blob/main/SFDCqueries/NPVTool_v2_Final.py" target="_blank">NPV Task Validation Automation</a></li>
+      <li><a class="standard" href="https://github.com/tvaroglu/SFDCTools/blob/main/DataArchive/DataArchive.py" target="_blank">Data Archive (for Forecasting Automation)</a></li>
+      <li><a class="standard" href="https://github.com/tvaroglu/SFDCTools/blob/main/sfdcbulk.py" target="_blank">SFDC Bulk API Data Loader</a></li>
+    </ul>
+
+    <br>
+    
+    <hr style="margin:auto;padding:0px;width:auto"> 
+
+  </div>
+
+
+<button class="repo"><a class ="standard" href="https://github.com/tvaroglu/TestingBackup" target="_blank"><em>QA &amp; Testing Scripts (JavaScript)</em></a></button>
+
+  <div class="modules">
+
+    <img src="https://nordicapis.com/wp-content/uploads/postman-logo-2.png"
+    alt="Postman Logo" id="postman"
+    style="float:left;margin-right:5px;height:60px;border:0px;padding-right:5px;border-radius:5px;">
+
+    <ul id="ul01">
+      <li><a class="standard" href="https://github.com/tvaroglu/TestingBackup/blob/main/CAPtain-.postman_collection_ALL.json" target="_blank">Postman Functional Testing Collection</a></li>
+      <li><a class="standard" href="https://github.com/tvaroglu/TestingBackup/blob/main/k6-script_CAPtain_ALL.js" target="_blank">k6 Load Testing Script</a></li>
+      <li><a class="standard" href="https://github.com/tvaroglu/TestingBackup/blob/main/JSON_gen.py" target="_blank">JSON Dynamic Variable Generator</a></li>
+    </ul>
+
+    <br>
+
+    <hr style="margin:auto;padding:0px;width:auto">  
+
+  </div>
+
 
 <button class="accordion"><em>Resume</em></button>
 
-        <div>
+  <div class="panel">
 
-              <img src="https://scontent-den4-1.xx.fbcdn.net/v/t1.0-9/122486819_10222304799596406_1898149828464497443_o.jpg?_nc_cat=107&ccb=2&_nc_sid=0debeb&_nc_ohc=kniRQUgS5qQAX9Twpua&_nc_ht=scontent-den4-1.xx&oh=89dc375046d7c105790034d85739855e&oe=5FB938DB" alt="resume" style="width:99%; height:auto; border-radius:10px;"></img>
+    <img src="https://scontent.fapa1-1.fna.fbcdn.net/v/t1.0-9/157583712_10223286829066529_328965886833330552_n.jpg?_nc_cat=103&ccb=3&_nc_sid=730e14&_nc_ohc=k4JTt9LQnmcAX9b3Czm&_nc_ht=scontent.fapa1-1.fna&oh=e9c8bbd3316f921f1b0967c3d6bfdd36&oe=606803FE" alt="resume" style="height:67%; width:67%; border-radius: 10px;"></img>
 
-        </div>
-
-
-<button class="accordion"><em>SFDC &amp; Internal Tools (Python)</em></button>
-
-        <div class="panel">
-
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1024px-Python-logo-notext.svg.png"
-              alt="Python Logo" id="python" style="float:left;margin-right:5px;height:65px;border:0px;padding-right:5px;border-radius:5px;"></img>
-
-              <ul id="ul01">
-                <li><a class="standard" href="https://github.com/tvaroglu/SFDCTools/blob/master/DataArchive/DataArchive.py" target="_blank">Data Archive (for Forecasting Automation)</a></li>
-                <li><a class="standard" href="https://github.com/tvaroglu/SFDCTools/blob/master/sfdcbulk.py" target="_blank">SFDC Bulk API Data Loader</a></li>
-              </ul>
-            
-            <br>
-            <br>  
-            <hr style="margin:auto;padding:0px;width:auto"> 
-
-        </div>
+  </div>
 
 
-<button class="accordion"><em>QA &amp; Testing Scripts (JavaScript)</em></button>
-
-        <div class="panel">
-
-                <img src="https://nordicapis.com/wp-content/uploads/postman-logo-2.png"
-                alt="Postman Logo" id="postman"
-                style="float:left;margin-right:5px;height:60px;border:0px;padding-right:5px;border-radius:5px;">
-          
-              <ul id="ul01">
-                <li><a class="standard" href="https://github.com/tvaroglu/TestingBackup/blob/master/CAPtain-.postman_collection_ALL.json" target="_blank">Postman Functional Testing Collection</a></li>
-                <li><a class="standard" href="https://github.com/tvaroglu/TestingBackup/blob/master/k6-script_CAPtain_ALL.js" target="_blank">k6 Load Testing Script</a></li>
-                <li><a class="standard" href="https://github.com/tvaroglu/TestingBackup/blob/master/JSON_gen.py" target="_blank">JSON Dynamic Variable Generator</a></li>
-              </ul>
-
-            <br>      
-            <hr style="margin:auto;padding:0px;width:auto">  
-
-        </div>
+<br>
+<br>
 
 
 <div style="display:none">
-<script>
+  <script>
     var acc = document.getElementsByClassName("accordion");
     var i;
     
@@ -275,14 +317,13 @@ a.NAVBAR:hover, a.NAVBAR:active {
           panel.style.display = "none";
         } else {
           panel.style.display = "block";
-        }
+        };
       });
-    }
-</script>
+    };
+  </script>
 </div>
 
-<br>
-<br>
+
 
 <p class="p01" id="contact">
     <strong>Contact Info:</strong>
@@ -293,8 +334,9 @@ a.NAVBAR:hover, a.NAVBAR:active {
     Taylor.Varoglu@colorado.edu
       <br>
     <a href="https://www.linkedin.com/in/taylorvaroglu/" target="_blank" style="color:rgba(200, 244, 250, 0.8);">LinkedIn</a>
-    <a href="https://github.com/tvaroglu" target="_blank" style="color:rgba(200, 244, 250, 0.8);">Github</a>
 </p>
+
+<br>
 
 </body>
 </html>
