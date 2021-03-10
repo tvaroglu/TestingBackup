@@ -1,137 +1,178 @@
+function convertChar(character, numChars) {
+	let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+	let convertedChar = ' ';
+	if (character === ' ') {
+		return convertedChar;
+	};
+	let startIndex = alphabet.indexOf(character);
+	let endIndex = startIndex - numChars;
+	if (endIndex >= 0) {
+		convertedChar = alphabet[endIndex];
+	} else {
+		let delta = 26 - numChars;
+		endIndex = startIndex + delta;
+		convertedChar = alphabet[endIndex];
+	};
+	return convertedChar;
+};
+
+
+let charactersToConvert = 'hushdearbabyheartherainhushandsleepbecalmagain';
+
+let charactersToMove = [
+	23, 20, 20, 22, 3, 22, 14, 9, 9, 8, 3, 10, 13, 15, 15, 13, 19, 15, 0, 19, 0, 17, 22, 19, 24, 8, 3, 2, 5, 11, 0, 17, 18, 18, 11, 10, 11, 20, 14, 7, 5, 22, 21, 11, 22, 9
+];
+
+
+let outputStr = '';
+for (let i = 0; i < charactersToConvert.length; i++) {
+	let currentChar = charactersToConvert[i];
+	if (currentChar === ' ') {
+		continue;
+	} else {
+		let conversion = convertChar(currentChar, charactersToMove[i]);
+		outputStr += conversion;
+	};
+};
+
+console.log(outputStr);
+
+
+
 // Skeleton
-function getDomain(url) {
+function highestScoringWord(string) {
 	//create variable aliases
 	let outputStr = '';
-	let inputStr = url.toString();
-	let urlSplitLeft;
-	let urlSplitRight;
-	//split url left on "http://" or "www." as applicable
-	if (inputStr.indexOf('://www.') !== -1) {
-		urlSplitLeft = inputStr.split('://www.');
-	} else if (inputStr.indexOf('://') !== -1) {
-		urlSplitLeft = inputStr.split('://');
-	} else if (inputStr.indexOf('www.') !== -1) {
-		urlSplitLeft = inputStr.split('www.');
+	let shellObj = {};
+	let scoreArr = [];
+	let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+	//split input string on space
+	let cleanInput = string.toString();
+	let stringSplit = cleanInput.split(' ');
+	//iterate through split input string array
+	for (let i = 0; i < stringSplit.length; i++) {
+		//iterate through each word to assign score
+		let currentWord = stringSplit[i];
+		let wordScore = 0;
+		for (let j = 0; j < currentWord.length; j++) {
+			let currentLetter = currentWord[j].toLowerCase();
+			let letterScore = alphabet.indexOf(currentLetter) + 1;
+			wordScore += letterScore;
+			//add word and score to placeholder object
+			shellObj[currentWord] = {
+				'word': currentWord,
+				'score': wordScore
+				};
+		};
+	scoreArr.push(wordScore);
 	};
-	urlSplitRight = urlSplitLeft[1].split('.');
-	outputStr = urlSplitRight[0];
+	let max = Math.max(...scoreArr);
+	//iterate through placeholder object for final scoring
+	for (let key in shellObj) {
+		if (shellObj[key].score === max && max !== 0) {
+			//assign highest scoring (or first if tie) to output string
+			outputStr = shellObj[key].word.toLowerCase();
+			break;
+		};
+	};
 	//return output string
 	return outputStr;
+};
+
+// TestSuite
+function assertEqual(actual, expected, testName) {
+	let success = `passed [${testName}]: expected \n "${expected}", and got \n "${actual}"`;
+	let failure = `failed [${testName}]: expected \n "${expected}", but got \n "${actual}"`;
+	if (actual === expected) {
+		console.log(success);
+	} else {
+		console.log(failure);
+	};
+};
+
+let actualSingleHighScore = highestScoringWord('Hello World');
+let expectedSingleHighScore = 'world';
+let testNameSingleHighScore = 'it correctly returns the highest scoring word when no ties for high score';
+console.log(assertEqual(actualSingleHighScore, expectedSingleHighScore, testNameSingleHighScore));
+
+let actualTiedHighScore = highestScoringWord('Hello ohell');
+let expectedTiedHighScore = 'hello';
+let testNameTiedHighScore = 'it correctly returns the first highest scoring word when there are ties for high score';
+console.log(assertEqual(actualTiedHighScore, expectedTiedHighScore, testNameTiedHighScore));
+
+let actualNoHighScore = highestScoringWord(' ');
+let expectedNoHighScore = '';
+let testNameNoHighScore = 'it correctly returns an empty string when there are no words to score';
+console.log(assertEqual(actualNoHighScore, expectedNoHighScore, testNameNoHighScore));
+
+let actualNotStringScore = highestScoringWord(123);
+let expectedNotStringScore = '';
+let testNameNotStringScore = 'it correctly returns an empty string when a non-string is passed as input';
+console.log(assertEqual(actualNotStringScore, expectedNotStringScore, testNameNotStringScore));
+
+
+
+
+
+// Skeleton
+function getDomain(url) {
+  //create variable aliases
+  let outputStr = '';
+  let inputStr = url.toString();
+  let urlSplitLeft;
+  let urlSplitRight;
+  //split url left on "http://" or "www." as applicable
+  if (inputStr.indexOf('://www.') !== -1) {
+	  urlSplitLeft = inputStr.split('://www.');
+  } else if (inputStr.indexOf('://') !== -1) {
+	  urlSplitLeft = inputStr.split('://');
+  } else if (inputStr.indexOf('www.') !== -1) {
+	  urlSplitLeft = inputStr.split('www.');
   };
-  
-  
-  // TestSuite
-  function assertEqual(actual, expected, testName) {
-	  let success = `passed [${testName}]: expected \n "${expected}", and got \n "${actual}"`;
-	  let failure = `failed [${testName}]: expected \n "${expected}", but got \n "${actual}"`;
-	  if (actual === expected) {
-		  console.log(success);
-	  } else {
-		  console.log(failure);
-	  };
-  };
-  
-  let testAll = 'It correctly extracts the domain name from the input url';
-  
-  let actual1 = getDomain('http://github.com/carbonfive/raygun');
-  let expected1 = 'github';
-  console.log(assertEqual(actual1, expected1, testAll));
-  
-  let actual2 = getDomain('http://www.zombie-bites.com');
-  let expected2 = 'zombie-bites';
-  console.log(assertEqual(actual2, expected2, testAll));
-  
-  let actual3 = getDomain('https://www.facebook.com');
-  let expected3 = 'facebook';
-  console.log(assertEqual(actual3, expected3, testAll));
-  
-  let actual4 = getDomain('https://cnet.com');
-  let expected4 = 'cnet';
-  console.log(assertEqual(actual4, expected4, testAll));
-  
-  let actual5 = getDomain('www.google.co');
-  let expected5 = 'google';
-  console.log(assertEqual(actual5, expected5, testAll));
-  
-  
-  
-  
-  
-  // Skeleton
-  function highestScoringWord(string) {
-  	//create variable aliases
-  	let outputStr = '';
-  	let shellObj = {};
-  	let scoreArr = [];
-  	let alphabet = 'abcdefghijklmnopqrstuvwxyz';
-  	//split input string on space
-  	let cleanInput = string.toString();
-  	let stringSplit = cleanInput.split(' ');
-  	//iterate through split input string array
-  	for (let i = 0; i < stringSplit.length; i++) {
-  		//iterate through each word to assign score
-  		let currentWord = stringSplit[i];
-  		let wordScore = 0;
-  		for (let j = 0; j < currentWord.length; j++) {
-  			let currentLetter = currentWord[j].toLowerCase();
-  			let letterScore = alphabet.indexOf(currentLetter) + 1;
-  			wordScore += letterScore;
-  			//add word and score to placeholder object
-  			shellObj[currentWord] = {
-  				'word': currentWord,
-  				'score': wordScore
-  				};
-  		};
-  	scoreArr.push(wordScore);
-  	};
-  	let max = Math.max(...scoreArr);
-  	//iterate through placeholder object for final scoring
-  	for (let key in shellObj) {
-  		if (shellObj[key].score === max && max !== 0) {
-  			//assign highest scoring (or first if tie) to output string
-  			outputStr = shellObj[key].word.toLowerCase();
-  			break;
-  		};
-  	};
-  	//return output string
-  	return outputStr;
-  };
-  
-  // TestSuite
-  function assertEqual(actual, expected, testName) {
-  	let success = `passed [${testName}]: expected \n "${expected}", and got \n "${actual}"`;
-  	let failure = `failed [${testName}]: expected \n "${expected}", but got \n "${actual}"`;
-  	if (actual === expected) {
-  		console.log(success);
-  	} else {
-  		console.log(failure);
-  	};
-  };
-  
-  let actualSingleHighScore = highestScoringWord('Hello World');
-  let expectedSingleHighScore = 'world';
-  let testNameSingleHighScore = 'it correctly returns the highest scoring word when no ties for high score';
-  console.log(assertEqual(actualSingleHighScore, expectedSingleHighScore, testNameSingleHighScore));
-  
-  let actualTiedHighScore = highestScoringWord('Hello ohell');
-  let expectedTiedHighScore = 'hello';
-  let testNameTiedHighScore = 'it correctly returns the first highest scoring word when there are ties for high score';
-  console.log(assertEqual(actualTiedHighScore, expectedTiedHighScore, testNameTiedHighScore));
-  
-  let actualNoHighScore = highestScoringWord(' ');
-  let expectedNoHighScore = '';
-  let testNameNoHighScore = 'it correctly returns an empty string when there are no words to score';
-  console.log(assertEqual(actualNoHighScore, expectedNoHighScore, testNameNoHighScore));
-  
-  let actualNotStringScore = highestScoringWord(123);
-  let expectedNotStringScore = '';
-  let testNameNotStringScore = 'it correctly returns an empty string when a non-string is passed as input';
-  console.log(assertEqual(actualNotStringScore, expectedNotStringScore, testNameNotStringScore));
+  urlSplitRight = urlSplitLeft[1].split('.');
+  outputStr = urlSplitRight[0];
+  //return output string
+  return outputStr;
+};
+
+
+// TestSuite
+function assertEqual(actual, expected, testName) {
+	let success = `passed [${testName}]: expected \n "${expected}", and got \n "${actual}"`;
+	let failure = `failed [${testName}]: expected \n "${expected}", but got \n "${actual}"`;
+	if (actual === expected) {
+		console.log(success);
+	} else {
+		console.log(failure);
+	};
+};
+
+let testAllDomains = 'It correctly extracts the domain name from the input url';
+
+let actualDomain1 = getDomain('http://github.com/carbonfive/raygun');
+let expectedDomain1 = 'github';
+console.log(assertEqual(actualDomain1, expectedDomain1, testAllDomains));
+
+let actualDomain2 = getDomain('http://www.zombie-bites.com');
+let expectedDomain2 = 'zombie-bites';
+console.log(assertEqual(actualDomain2, expectedDomain2, testAllDomains));
+
+let actualDomain3 = getDomain('https://www.facebook.com');
+let expectedDomain3 = 'facebook';
+console.log(assertEqual(actualDomain3, expectedDomain3, testAllDomains));
+
+let actualDomain4 = getDomain('https://cnet.com');
+let expectedDomain4 = 'cnet';
+console.log(assertEqual(actualDomain4, expectedDomain4, testAllDomains));
+
+let actualDomain5 = getDomain('www.google.co');
+let expectedDomain5 = 'google';
+console.log(assertEqual(actualDomain5, expectedDomain5, testAllDomains));
+
   
   
   
-  
-  
+    
   // Skeleton
   function splitPairs(input) {
     //create output array
@@ -268,13 +309,13 @@ function assertEquals(actual, expected, testName) {
 	};
 };
 
-let testAll = 'It correctly returns a formatted integer string based on the provided integer input array';
-let actual1 = solution([-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20]);
-let expected1 = "-6,-3-1,3-5,7-11,14,15,17-20";
-let actual2 = solution([-4, -3, -2, -1, 2, 3, 5, 6, 12, 13, 14, 15, 17]);
-let expected2 = "-4--1,2,3,5,6,12-15,17";
-console.log(assertEquals(actual1, expected1, testAll));
-console.log(assertEquals(actual2, expected2, testAll));
+let testAllSolution = 'It correctly returns a formatted integer string based on the provided integer input array';
+let actualSolution1 = solution([-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20]);
+let expectedSolution1 = "-6,-3-1,3-5,7-11,14,15,17-20";
+let actualSolution2 = solution([-4, -3, -2, -1, 2, 3, 5, 6, 12, 13, 14, 15, 17]);
+let expectedSolution2 = "-4--1,2,3,5,6,12-15,17";
+console.log(assertEquals(actualSolution1, expectedSolution1, testAllSolution));
+console.log(assertEquals(actualSolution2, expectedSolution2, testAllSolution));
 
 
 
@@ -456,9 +497,9 @@ function testAll(testArray, expectedValuesArray, testCase) {
 };
 
 
-let testNameAll = 'It correctly calculates the winner of the provided Connect4 game values based on the provided input array';
+let testNameAllGames = 'It correctly calculates the winner of the provided Connect4 game values based on the provided input array';
 
-let actualOutputs = [
+let actualGameResults = [
 	//blackWinner
 	checkWinner(['black', 'red', 'black', 'black', 'black', 'black', 'red']),
 	//redWinner
@@ -467,13 +508,13 @@ let actualOutputs = [
 	checkWinner(['red', 'red', 'red', 'black', 'red', 'black', 0])
 ];
 
-let expectedValues = [
+let expectedGameResults = [
 	'Black Wins!',
 	'Red Wins!',
 	'Draw!'
 ];
 
-console.log(testAll(actualOutputs, expectedValues, testNameAll));
+console.log(testAll(actualGameResults, expectedGameResults, testNameAllGames));
 
 
 
@@ -514,9 +555,9 @@ function sumAltitudeDeltas(arrayOfIntegers, startIndex, endIndex) {
 
 
 //TestSuite
-let testNameAll = 'It correctly calculates the sum of altitude changes along the integer array of hiking altitude values';
+let testNameAllAltitudes = 'It correctly calculates the sum of altitude changes along the integer array of hiking altitude values';
 
-let actualOutputs = [
+let actualAltitudeOutputs = [
 	sumAltitudeDeltas([1, 2, 3, 1], 0, 3),
 	sumAltitudeDeltas([5, 3, 6, 7, 2], 2, 4),
 	sumAltitudeDeltas([5, 3, 6, 7, 2], 0, 1),
@@ -524,7 +565,7 @@ let actualOutputs = [
 	sumAltitudeDeltas([4, 1, 4, 0, 20, 13], 1, 4)
 ];
 
-let expectedValues = [
+let expectedAltitudeValues = [
 	6,
 	7,
 	2,
@@ -532,7 +573,7 @@ let expectedValues = [
 	50
 ];
 
-console.log(testAll(actualOutputs, expectedValues, testNameAll));
+console.log(testAll(actualAltitudeOutputs, expectedAltitudeValues, testNameAllAltitudes));
 
 
 
@@ -561,34 +602,34 @@ Notes:
 * If at any point you calculate the index of the midpoint and get a fractional number, just round it down ("floor" it).
 */
 
-//Skeleton
-function binarySearchv1(arrayOfIntegers, targetInteger) {
-	//create variable alias(es)
-	let outputIndex = null;
-	let startIndex = 0;
-	//evaluate index of targetInteger within input array to find midpoint
-	let targetIndex = arrayOfIntegers.indexOf(targetInteger);
-	if (targetIndex === -1) {
-		return outputIndex;
-	} else {
-		//round midpoint down (floor it) if fractional value
-		let midPoint = Math.floor(arrayOfIntegers.length / 2);
-		//iterate through arrayOfIntegers beginning with final midpoint calc
-		if (targetIndex > midPoint) {
-			startIndex = midPoint;
-		};
-		for (var i = startIndex; i < arrayOfIntegers.length; i++) {
-			//set return variable to targetInteger index once found
-			if (arrayOfIntegers[i] === targetInteger) {
-				outputIndex = i;
-				//break
-				break;
-			};
-		};
-	};
-	//return targetInteger's index value
-	return outputIndex;
-};
+// //Skeleton
+// function binarySearchv1(arrayOfIntegers, targetInteger) {
+// 	//create variable alias(es)
+// 	let outputIndex = null;
+// 	let startIndex = 0;
+// 	//evaluate index of targetInteger within input array to find midpoint
+// 	let targetIndex = arrayOfIntegers.indexOf(targetInteger);
+// 	if (targetIndex === -1) {
+// 		return outputIndex;
+// 	} else {
+// 		//round midpoint down (floor it) if fractional value
+// 		let midPoint = Math.floor(arrayOfIntegers.length / 2);
+// 		//iterate through arrayOfIntegers beginning with final midpoint calc
+// 		if (targetIndex > midPoint) {
+// 			startIndex = midPoint;
+// 		};
+// 		for (var i = startIndex; i < arrayOfIntegers.length; i++) {
+// 			//set return variable to targetInteger index once found
+// 			if (arrayOfIntegers[i] === targetInteger) {
+// 				outputIndex = i;
+// 				//break
+// 				break;
+// 			};
+// 		};
+// 	};
+// 	//return targetInteger's index value
+// 	return outputIndex;
+// };
 
 function binarySearch(arrayOfIntegers, targetInteger) {
 	//create variable aliases
@@ -708,23 +749,23 @@ Doubled string: 'hello worldhello world'
 Search w/in it: '       orldhello w    '
 */
 
-//Skeleton
-function isRotatedV1(stringOfStrings, subString) {
-	//create output boolean
-	var rotatedStrBoolean;
-	//split input strings on space
-	let inputStrSplit = stringOfStrings.split(' ');
-	//double each split string element and join indexes 2 and 3
-	let outputStr = inputStrSplit[0] + ' ' + inputStrSplit[1] + inputStrSplit[0] + ' ' + inputStrSplit[1];
-	//search joined string for substring
-	if (outputStr.includes(subString) === true) {
-		rotatedStrBoolean = true;
-	} else {
-		rotatedStrBoolean = false;
-	};
-	return rotatedStrBoolean;
-	//return output boolean
-};
+// //Skeleton
+// function isRotatedV1(stringOfStrings, subString) {
+// 	//create output boolean
+// 	var rotatedStrBoolean;
+// 	//split input strings on space
+// 	let inputStrSplit = stringOfStrings.split(' ');
+// 	//double each split string element and join indexes 2 and 3
+// 	let outputStr = inputStrSplit[0] + ' ' + inputStrSplit[1] + inputStrSplit[0] + ' ' + inputStrSplit[1];
+// 	//search joined string for substring
+// 	if (outputStr.includes(subString) === true) {
+// 		rotatedStrBoolean = true;
+// 	} else {
+// 		rotatedStrBoolean = false;
+// 	};
+// 	return rotatedStrBoolean;
+// 	//return output boolean
+// };
 
 function isRotated(str1, str2) {
 	//create output boolean
@@ -920,20 +961,20 @@ function assertEqual(actual, expected, testName) {
 	};
 };
 
-let actual1 = transposeTwoStrings(['Hello','World']);
-let expected1 = 'H W\ne o\nl r\nl l\no d\n';
-let testName1 = 'it correctly transposes both strings of equal length';
-console.log(assertEqual(actual1, expected1, testName1));
+let actualEqualStrings = transposeTwoStrings(['Hello','World']);
+let expectedEqualStrings = 'H W\ne o\nl r\nl l\no d\n';
+let testNameEqualStrings = 'it correctly transposes both strings of equal length';
+console.log(assertEqual(actualEqualStrings, expectedEqualStrings, testNameEqualStrings));
 
-let actual2 = transposeTwoStrings(['Hell','World']);
-let expected2 = 'H W\ne o\nl r\nl l\n  d\n';
-let testName2 = 'it correctly transposes both strings with a shorter length for string 1';
-console.log(assertEqual(actual2, expected2, testName2));
+let actualShorterString1 = transposeTwoStrings(['Hell','World']);
+let expectedShorterString1 = 'H W\ne o\nl r\nl l\n  d\n';
+let testNameShorterString1 = 'it correctly transposes both strings with a shorter length for string 1';
+console.log(assertEqual(actualShorterString1, expectedShorterString1, testNameShorterString1));
 
-let actual3 = transposeTwoStrings(['Hello','Worl']);
-let expected3 = 'H W\ne o\nl r\nl l\no  \n';
-let testName3 = 'it correctly transposes both strings with a shorter length for string 2';
-console.log(assertEqual(actual3, expected3, testName3));
+let actualShorterString2 = transposeTwoStrings(['Hello','Worl']);
+let expectedShorterString2 = 'H W\ne o\nl r\nl l\no  \n';
+let testNameShorterString2 = 'it correctly transposes both strings with a shorter length for string 2';
+console.log(assertEqual(actualShorterString2, expectedShorterString2, testNameShorterString2));
 
 
 
@@ -1003,20 +1044,20 @@ function assertEqual(actual, expected, testName) {
 	};
 };
 
-let actual1 = detectOutlierValue("2 4 7 8 10");
-let expected1 = 3;
-let testName1 = 'it correctly returns the index of the odd outlier value';
-console.log(assertEqual(actual1, expected1, testName1));
+let actualOddOutlier = detectOutlierValue("2 4 7 8 10");
+let expectedOddOutlier = 3;
+let testNameOddOutlier = 'it correctly returns the index of the odd outlier value';
+console.log(assertEqual(actualOddOutlier, expectedOddOutlier, testNameOddOutlier));
 
-let actual2 = detectOutlierValue("1 10 1 1");
-let expected2 = 2;
-let testName2 = 'it correctly returns the index of the even outlier value';
-console.log(assertEqual(actual2, expected2, testName2));
+let actualEvenOutlier = detectOutlierValue("1 10 1 1");
+let expectedEvenOutlier = 2;
+let testNameEvenOutlier = 'it correctly returns the index of the even outlier value';
+console.log(assertEqual(actualEvenOutlier, expectedEvenOutlier, testNameEvenOutlier));
 
-let actual3 = detectOutlierValue("2 2 4 4");
-let expected3 = 'No outliers detected, please check your input string!';
-let testName3 = 'it correctly returns the error message if no outliers are found';
-console.log(assertEqual(actual3, expected3, testName3));
+let actualNoOutlier = detectOutlierValue("2 2 4 4");
+let expectedNoOutlier = 'No outliers detected, please check your input string!';
+let testNameNoOutlier = 'it correctly returns the error message if no outliers are found';
+console.log(assertEqual(actualNoOutlier, expectedNoOutlier, testNameNoOutlier));
 
 
 
@@ -1082,11 +1123,11 @@ function assertEqual(actual, expected, testName) {
 	};
 };
 
-let input1 = 'a short example';
-let actual1 = flipEveryNChars(input1, 5);
-let expected1 = 'ohs axe trelpma';
-let testName1 = 'it correctly flips every 5th character chunk from the input string';
-console.log(assertEqual(actual1, expected1, testName1));
+let actualShortExample = flipEveryNChars('a short example', 5);
+let expectedShortExample = 'ohs axe trelpma';
+let testNameShortExample = 'it correctly flips every 5th character chunk from the input string';
+console.log(assertEqual(actualShortExample, expectedShortExample, testNameShortExample));
+
 
 
 
